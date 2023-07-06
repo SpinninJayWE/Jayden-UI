@@ -1,16 +1,23 @@
 <template>
-	<div class="jay-btn">jay btn</div>
+	<div class="j-button" :class="buttonClass">jay btn</div>
 </template>
 
-<script lang="ts">
-	import { defineComponent } from 'vue'
-	export default defineComponent({
+<script lang="ts" setup>
+	import { computed } from 'vue'
+	defineOptions({
 		name: 'j-button',
-		setup() {},
+	})
+	type ButtonProps = {
+		type?: string
+	}
+
+	const props = defineProps<ButtonProps>()
+
+	const buttonClass = computed(() => {
+		return [props.type]
 	})
 </script>
 
 <style lang="less" scoped>
-	.jay-btn {
-	}
+	@import './style/index.scss';
 </style>
