@@ -1,0 +1,21 @@
+{
+  "name": "jayden-ui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/index.js",
+  "module": "es/index.mjs",
+  "files": [
+    "es",
+    "lib"
+  ],
+  "keywords": [
+    "jayden-ui",
+    "Vue3组件库"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "author": "csjayden",
+  "license": "MIT",
+  "typings": "lib/index.d.ts"
+}
