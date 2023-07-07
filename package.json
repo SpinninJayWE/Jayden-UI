@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:jayden-ui": "gulp -f packages/components/script/build/index.ts"
+    "build:jayden-ui": "gulp -f packages/components/script/build/index.ts",
+    "publish:jayden-ui": "gulp -f packages/components/script/publish/index.ts"
   },
   "keywords": [],
   "author": "",
@@ -19,6 +20,7 @@
     "gulp-autoprefixer": "^8.0.0",
     "gulp-sass": "^5.1.0",
     "less": "^4.1.3",
+    "release-it": "^16.0.0",
     "sass": "^1.63.6",
     "sucrase": "^3.32.0",
     "typescript": "^5.1.6",

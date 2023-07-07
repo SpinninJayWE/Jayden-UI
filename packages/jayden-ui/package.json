@@ -17,5 +17,12 @@
   ],
   "author": "csjayden",
   "license": "MIT",
-  "typings": "lib/index.d.ts"
+  "typings": "lib/index.d.ts",
+  "scripts": {
+    "release": "release-it"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SpinninJayWE/Jayden-UI"
+  }
 }
