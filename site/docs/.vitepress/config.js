@@ -1,6 +1,6 @@
 export default {
 	title: 'jayden-ui',
-	base: process.env.NODE_ENV === 'production' ? '/Jayden-UI/' : '/',
+	base: process.env.NODE_ENV === 'production' ? '/jayden-ui/' : '/',
 	themeConfig: {
 		siteTitle: 'jayden-ui',
 		nav: [
