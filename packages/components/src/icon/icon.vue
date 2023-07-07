@@ -1,12 +1,12 @@
 <template>
-	<div class="j-button" :class="buttonClass">jay btn</div>
+	<div class="j-icon" :class="buttonClass">jay icon</div>
 </template>
 
 <script lang="ts" setup>
 	import './style/index.scss'
 	import { computed } from 'vue'
 	defineOptions({
-		name: 'j-button',
+		name: 'j-icon',
 	})
 	type ButtonProps = {
 		type?: string
