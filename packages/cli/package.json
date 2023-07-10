@@ -4,9 +4,7 @@
   "description": "",
   "bin": "index.js",
   "type": "module",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "scripts": {},
   "keywords": [
     "jayden-ui",
     "Vue3组件库"

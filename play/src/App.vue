@@ -1,10 +1,8 @@
 <template>
-	<div class="app">
-		<j-button type="primary"></j-button>
-		<Button />
-	</div>
+  <div class="app">
+    <j-button type="primary">jay btn</j-button>
+    <j-button>jay btn</j-button>
+  </div>
 </template>
-<script setup lang="ts">
-	import { Button } from '../../packages/jayden-ui/es'
-</script>
+<script setup lang="ts"></script>
 <style scoped></style>
