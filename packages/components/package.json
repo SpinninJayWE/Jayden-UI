@@ -2,11 +2,16 @@
   "name": "@jayden-ui/components",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.ts",
+  "module": "index.ts",
   "scripts": {
     "build": "vite build"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@jayden-ui/directives": "workspace:^",
+    "@jayden-ui/theme-chalk": "workspace:^"
+  }
 }

@@ -16,6 +16,6 @@
     "vue": "^3.3.4"
   },
   "dependencies": {
-    "jayden-ui": "workspace:^"
+    "@jayden-ui/components": "workspace:^"
   }
 }

@@ -98,9 +98,28 @@ importers:
         specifier: ^2.4.2
         version: 2.4.2
 
-  packages/components: {}
+  packages/components:
+    dependencies:
+      '@jayden-ui/directives':
+        specifier: workspace:^
+        version: link:../directives
+      '@jayden-ui/theme-chalk':
+        specifier: workspace:^
+        version: link:../theme-chalk
 
-  packages/jayden-ui: {}
+  packages/constants: {}
+
+  packages/directives: {}
+
+  packages/hooks: {}
+
+  packages/jayden-ui:
+    dependencies:
+      '@jayden-ui/theme-chalk':
+        specifier: workspace:^
+        version: link:../theme-chalk
+
+  packages/theme-chalk: {}
 
   packages/utils: {}
 
@@ -128,6 +147,9 @@ importers:
 
   site:
     dependencies:
+      '@jayden-ui/components':
+        specifier: workspace:^
+        version: link:../packages/components
       jayden-ui:
         specifier: workspace:^
         version: link:../packages/jayden-ui

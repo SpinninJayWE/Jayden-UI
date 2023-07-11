@@ -5,22 +5,25 @@
 </template>
 
 <script lang="ts" setup>
-import '../../../theme-chalk/src/index.scss';
-import { ClickWr } from '../../../directives/index';
-import './style/index.scss';
+import './style';
+import { ClickWr } from '@jayden-ui/directives';
 import { computed } from 'vue';
 defineOptions({
   name: 'j-button'
 });
 type ButtonProps = {
-  type?: string;
+  type?: '' | 'primary' | 'warn' | 'info' | 'err' | 'success';
+  size?: 'small' | 'medium' | 'large';
 };
 
 const vWr = ClickWr;
 
-const props = defineProps<ButtonProps>();
+const props = withDefaults(defineProps<ButtonProps>(), {
+  type: '',
+  size: 'medium'
+});
 
 const buttonClass = computed(() => {
-  return [props.type];
+  return [props.type, props.size];
 });
 </script>

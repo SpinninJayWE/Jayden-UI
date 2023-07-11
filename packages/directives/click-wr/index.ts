@@ -1,6 +1,5 @@
 function createRipple(e: MouseEvent) {
   const target = e.target as HTMLElement;
-  console.log(target);
 
   const { offsetX, offsetY } = e;
   const rippleDiv = document.createElement('div');
@@ -16,8 +15,6 @@ function createRipple(e: MouseEvent) {
 
 export default {
   created(el: HTMLElement) {
-    console.log(el);
-
     el.addEventListener('click', createRipple, true);
   },
   beforeUnmount(el: HTMLElement) {

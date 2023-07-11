@@ -24,5 +24,8 @@
   "repository": {
     "type": "git",
     "url": "git@github.com:SpinninJayWE/Jayden-UI.git"
+  },
+  "dependencies": {
+    "@jayden-ui/theme-chalk": "workspace:^"
   }
 }
