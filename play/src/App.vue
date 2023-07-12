@@ -34,22 +34,21 @@
       <h3>基础样式</h3>
       <j-button @click="modalShow = true" type="primary">Open Modal</j-button>
 
-      <Modal
+      <j-modal
         :clkOutSideClose="true"
         position="top"
-        title="Modal"
+        title="aaa"
         v-model:visable="modalShow"
       >
         <h2>Button 按钮</h2>
         <h3>默认尺寸</h3>
         <j-button type="primary">主题按钮</j-button>
-      </Modal>
+      </j-modal>
     </div>
   </div>
 </template>
 <script setup lang="ts">
 import { ref } from 'vue';
-import { Modal } from '@jayden-ui/components';
 const modalShow = ref(false);
 </script>
 <style scoped>

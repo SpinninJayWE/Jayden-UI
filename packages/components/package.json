@@ -11,7 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "jayden-ui-directives": "^1.0.0",
-    "jayden-ui-utils": "^1.0.0"
+    "jayden-ui-directives": "workspace:^",
+    "jayden-ui-utils": "workspace:^"
   }
 }

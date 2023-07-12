@@ -39,12 +39,12 @@
 import Button from '../button';
 import { ClickWr } from 'jayden-ui-directives';
 import './style/index.scss';
-import useModal from './use-modal';
+import useModal from './hooks/use-modal';
 defineOptions({
   name: 'j-modal'
 });
 
-export type ModalProps = {
+type ModalProps = {
   visable: boolean;
   width?: number | string;
   height?: number | string;

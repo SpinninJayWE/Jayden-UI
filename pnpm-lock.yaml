@@ -105,10 +105,10 @@ importers:
   packages/components:
     dependencies:
       jayden-ui-directives:
-        specifier: ^1.0.0
+        specifier: workspace:^
         version: link:../directives
       jayden-ui-utils:
-        specifier: ^1.0.0
+        specifier: workspace:^
         version: link:../utils
 
   packages/constants: {}
