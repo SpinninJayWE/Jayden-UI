@@ -11,7 +11,7 @@ export default defineConfig({
     minify: false,
     rollupOptions: {
       //忽略打包vue/.scss/@jayden-ui/directives文件
-      external: ['vue', /\.scss/, '@jayden-ui/directives', '@jayden-ui/utils'],
+      external: ['vue', /\.scss/, 'jayden-ui-directives', 'jayden-ui-utils'],
       input: ['index.ts'],
       output: [
         {

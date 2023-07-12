@@ -12,7 +12,7 @@
 
 <script lang="ts" setup>
 import './style/index.scss';
-import { ClickWr } from '@jayden-ui/directives';
+import { ClickWr } from 'jayden-ui-directives';
 import { computed } from 'vue';
 defineOptions({
   name: 'j-button'

@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 importers:
 
   .:
@@ -100,14 +104,11 @@ importers:
 
   packages/components:
     dependencies:
-      '@jayden-ui/directives':
-        specifier: workspace:^
+      jayden-ui-directives:
+        specifier: ^1.0.0
         version: link:../directives
-      '@jayden-ui/theme-chalk':
-        specifier: workspace:^
-        version: link:../theme-chalk
-      '@jayden-ui/utils':
-        specifier: workspace:^
+      jayden-ui-utils:
+        specifier: ^1.0.0
         version: link:../utils
 
   packages/constants: {}
@@ -118,9 +119,12 @@ importers:
 
   packages/jayden-ui:
     dependencies:
-      '@jayden-ui/directives':
-        specifier: workspace:^
+      jayden-ui-directives:
+        specifier: ^1.0.0
         version: link:../directives
+      jayden-ui-utils:
+        specifier: ^1.0.0
+        version: link:../utils
 
   packages/theme-chalk: {}
 
