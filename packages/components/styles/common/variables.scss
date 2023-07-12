@@ -5,14 +5,17 @@ $err-color: #ee5253;
 $success-color: #10ac84;
 $info-color: #0abde3;
 $primary-color: #2e86de;
-$disabled-color: #b9b7b7;
+$disabled-color: #e7e4e4;
 
+$bgc-color: #fff;
 $text-color: #222f3e;
 $text-gary: #576574;
 $text-gary2: #8395a7;
 $text-color-light: #c8d6e5;
 
 $border-color: #dcdde1;
+
+$mask-color: rgba(0, 0, 0, 0.6);
 
 // 基础字体大小
 $font-base-size: 16px;
@@ -38,3 +41,5 @@ $font-size-base: 1rem;
 $font-size-lg: 1.25rem;
 $font-size-md: 1rem;
 $font-size-sm: 0.875rem;
+
+$modal-zdx: 1200;

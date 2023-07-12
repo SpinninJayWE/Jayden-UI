@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@jayden-ui/components": "workspace:^",
+    "jayden-ui": "workspace:^",
     "vue": "^3.2.47"
   },
   "devDependencies": {

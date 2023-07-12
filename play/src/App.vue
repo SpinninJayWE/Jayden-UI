@@ -26,10 +26,32 @@
       <j-button type="err">错误按钮</j-button>
       &nbsp;
       <j-button type="success">成功按钮</j-button>
+      &nbsp;
+      <j-button disabled type="success">禁用按钮</j-button>
+    </div>
+    <div class="content-container">
+      <h2>Modal 模态框</h2>
+      <h3>基础样式</h3>
+      <j-button @click="modalShow = true" type="primary">Open Modal</j-button>
+
+      <Modal
+        :clkOutSideClose="true"
+        position="top"
+        title="Modal"
+        v-model:visable="modalShow"
+      >
+        <h2>Button 按钮</h2>
+        <h3>默认尺寸</h3>
+        <j-button type="primary">主题按钮</j-button>
+      </Modal>
     </div>
   </div>
 </template>
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref } from 'vue';
+import { Modal } from '@jayden-ui/components';
+const modalShow = ref(false);
+</script>
 <style scoped>
 .app {
   padding: 25px;

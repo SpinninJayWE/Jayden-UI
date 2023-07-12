@@ -1,0 +1,21 @@
+.modal-fade-enter-active,
+.modal-fade-leave-active {
+  transition: all 0.25s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.modal-fade-enter-from,
+.modal-fade-leave-to {
+  opacity: 0;
+  .j-modal-wrapper {
+    transform: translateY(-50%) scale(0.6);
+  }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
