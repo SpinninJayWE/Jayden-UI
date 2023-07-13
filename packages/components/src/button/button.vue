@@ -12,7 +12,7 @@
 
 <script lang="ts" setup>
 import './style/index.scss';
-import { ClickWr } from 'jayden-ui-directives';
+import { msdWr } from 'jayden-ui-directives';
 import { computed } from 'vue';
 defineOptions({
   name: 'j-button'
@@ -25,7 +25,7 @@ type ButtonProps = {
   disabled?: boolean;
 };
 
-const vWr = ClickWr;
+const vWr = msdWr;
 
 const props = withDefaults(defineProps<ButtonProps>(), {
   type: '',

@@ -5,8 +5,6 @@ import dts from 'vite-plugin-dts';
 import DefineOptions from 'unplugin-vue-define-options/vite';
 export default defineConfig({
   build: {
-    //打包后文件目录
-    outDir: 'j',
     //压缩
     minify: false,
     rollupOptions: {
@@ -48,9 +46,7 @@ export default defineConfig({
     dts({
       entryRoot: './src',
       outputDir: ['../jayden-ui/es/src', '../jayden-ui/lib/src'],
-      tsConfigFilePath: '../../tsconfig.json',
-      skipDiagnostics: false,
-      logDiagnostics: true
+      tsConfigFilePath: '../../tsconfig.json'
     }),
     {
       name: 'style',
