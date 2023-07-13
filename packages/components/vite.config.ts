@@ -48,7 +48,9 @@ export default defineConfig({
     dts({
       entryRoot: './src',
       outputDir: ['../jayden-ui/es/src', '../jayden-ui/lib/src'],
-      tsConfigFilePath: '../../tsconfig.json'
+      tsConfigFilePath: '../../tsconfig.json',
+      skipDiagnostics: false,
+      logDiagnostics: true
     }),
     {
       name: 'style',
