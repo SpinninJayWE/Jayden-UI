@@ -6,7 +6,12 @@
     @click="clickBtn"
     :class="buttonClass"
   >
-    <slot></slot>
+    <div @mousedown.stop.prevent class="j-button-icon">
+      <slot name="icon"></slot>
+    </div>
+    <div @mousedown.stop.prevent class="j-button-text">
+      <slot></slot>
+    </div>
   </div>
 </template>
 
@@ -23,6 +28,7 @@ type ButtonProps = {
   type?: '' | 'primary' | 'warn' | 'info' | 'err' | 'success';
   size?: 'small' | 'medium' | 'large';
   disabled?: boolean;
+  btnType?: 'btn' | 'text' | 'icon';
 };
 
 const vWr = msdWr;

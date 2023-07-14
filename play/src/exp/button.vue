@@ -2,7 +2,7 @@
   <div class="content-container">
     <h2>Button 按钮</h2>
     <h3>默认尺寸</h3>
-    <j-button type="primary">主题按钮</j-button>
+    <j-button size="so-small" type="primary">Extra small Button</j-button>
     &nbsp;
     <j-button>正常按钮</j-button>
     <h3>小尺寸</h3>
