@@ -2,7 +2,6 @@ function createRipple(e: MouseEvent) {
   const target = e.currentTarget as HTMLElement;
 
   const { offsetX, offsetY } = e;
-  console.log(offsetX, offsetY);
 
   const rippleDiv = document.createElement('div');
   rippleDiv.className = 'ripple-dom';
