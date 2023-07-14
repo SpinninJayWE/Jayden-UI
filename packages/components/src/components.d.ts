@@ -5,6 +5,7 @@ declare module '@vue/runtime-core' {
     JIcon: typeof components.Icon;
     JModal: typeof components.Modal;
     JTable: typeof components.Table;
+    jInput: typeof components.Input;
   }
 }
 export {};

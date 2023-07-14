@@ -9,4 +9,6 @@ const withInstall = <T>(comp: T) => {
   return comp as SFCWithInstall<T>;
 };
 
+const isEmptyObj = () => {};
+
 export { withInstall };

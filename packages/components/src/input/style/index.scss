@@ -1,0 +1,82 @@
+@use '../../../styles/common/variables.scss' as *;
+@use '../../../styles/common/minxin.scss' as *;
+.j-input {
+  min-width: 100px;
+  width: 120px;
+  position: relative;
+  display: inline-block;
+  background-color: $ipt-bgc-color;
+  border-bottom: 1px solid $border-color;
+  .j-ipt-control {
+    padding: 15px 16px;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 100;
+  }
+  .j-ipt-control input {
+    width: 100%;
+    height: 25px;
+    border: none;
+    outline: none;
+    background: none;
+    color: $text-color;
+    box-sizing: border-box;
+  }
+
+  .j-ipt-control .j-ipt-label {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    height: 20px;
+    margin-top: -10px;
+
+    font-size: $font-size-sm;
+    color: $text-gary2;
+    transition: all 0.2s ease-out;
+    @include noselect();
+    pointer-events: none;
+  }
+
+  .j-ipt-control input:focus + .j-ipt-label {
+    font-size: $font-size-ssm;
+    transform: translate(-4px, -18px);
+  }
+
+  &.size-small {
+    min-width: 80px;
+    .j-ipt-control {
+      padding: 15px 16px;
+      input {
+        height: 20px;
+      }
+      .j-ipt-label {
+        left: 16px;
+      }
+    }
+  }
+
+  &.size-mediun {
+    min-width: 100px;
+    .j-ipt-control {
+      padding: 15px 16px;
+      input {
+        height: 25px;
+      }
+      .j-ipt-label {
+        left: 16px;
+      }
+    }
+  }
+  &.size-large {
+    min-width: 120px;
+    .j-ipt-control {
+      padding: 20px 20px;
+      input {
+        height: 30px;
+      }
+      .j-ipt-label {
+        left: 20px;
+      }
+    }
+  }
+}

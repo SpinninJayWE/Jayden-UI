@@ -30,7 +30,7 @@
 
   &:not(.disabled)::before {
     content: '';
-    background: $mask-hover-color;
+    background: $btn-hover-bgc-color;
     opacity: 0;
     transition: opacity 0.2s ease-out;
     @include mask();
