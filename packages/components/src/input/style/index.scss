@@ -1,5 +1,6 @@
 @use '../../../styles/common/variables.scss' as *;
 @use '../../../styles/common/minxin.scss' as *;
+@use '../../../styles/common/transition.scss' as *;
 .j-input {
   min-width: 100px;
   width: 220px;
@@ -12,6 +13,7 @@
   }
 
   .j-ipt-control {
+    display: flex;
     width: 100%;
     box-sizing: border-box;
     background-color: $ipt-bgc-color;
@@ -37,13 +39,31 @@
   }
 
   .j-ipt-control input {
-    width: 100%;
+    flex: 1;
     height: 25px;
     border: none;
     outline: none;
     background: none;
     color: $text-color;
     box-sizing: border-box;
+  }
+
+  .j-ipt-control .claer-tigger-icon {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    right: 12px;
+    top: 50%;
+    width: 25px;
+    height: 25px;
+    margin-top: -12.5px;
+    overflow: hidden;
+    vertical-align: middle;
+    color: $text-color;
+    // background-color: $disabled-color;
+    border-radius: 50%;
+    cursor: pointer;
   }
 
   .j-ipt-control .j-ipt-label {

@@ -9,10 +9,20 @@
         :type="type"
         required
       />
+
       <div :style="{ ...labelStyles }" class="j-ipt-label">
         {{ props.label }}
       </div>
       <div class="j-jpt-border-bottom"></div>
+      <Transition name="fade">
+        <div
+          @click="iptValue = ''"
+          v-if="showClearTigger"
+          class="claer-tigger-icon"
+        >
+          x
+        </div>
+      </Transition>
     </div>
   </div>
 </template>
@@ -32,6 +42,7 @@ type InputProps = {
   disabled?: boolean;
   readonly?: boolean;
   block?: boolean;
+  clearable?: boolean;
 };
 
 const emit = defineEmits(['update:modelValue']);
@@ -43,7 +54,8 @@ const props = withDefaults(defineProps<InputProps>(), {
   size: 'medium',
   disabled: false,
   readonly: false,
-  block: false
+  block: false,
+  clearable: false
 });
 
 const iptValue = computed({
@@ -80,6 +92,12 @@ const labelStyles = computed(() => {
   }
 
   return res;
+});
+
+const showClearTigger = computed(() => {
+  return (
+    iptValue.value && !props.readonly && !props.disabled && props.clearable
+  );
 });
 </script>
 

@@ -24,6 +24,8 @@
       <j-input v-model="ipt" disabled label="Disabled"></j-input>
       <h3>块级铺满 Block</h3>
       <j-input block v-model="ipt" label="Medium"></j-input>
+      <h3>清除按钮 Clearable</h3>
+      <j-input v-model="ipt" clearable label="Clearable"></j-input>
     </div>
   </div>
 </template>
