@@ -14,13 +14,13 @@
         {{ props.label }}
       </div>
       <div class="j-jpt-border-bottom"></div>
-      <Transition name="fade">
+      <Transition name="scale">
         <div
           @click="iptValue = ''"
           v-if="showClearTigger"
           class="claer-tigger-icon"
         >
-          x
+          X
         </div>
       </Transition>
     </div>
