@@ -50,21 +50,9 @@
 
   .j-ipt-control .claer-tigger-icon {
     position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     right: 12px;
     top: 50%;
-    width: 20px;
-    height: 20px;
     margin-top: -10px;
-    overflow: hidden;
-    vertical-align: middle;
-    color: $white-color;
-    font-size: 12px;
-    background-color: rgba($color: #000000, $alpha: 0.6);
-    border-radius: 50%;
-    cursor: pointer;
   }
 
   .j-ipt-control .j-ipt-label {

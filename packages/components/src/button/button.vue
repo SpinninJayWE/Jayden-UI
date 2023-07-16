@@ -6,10 +6,10 @@
     @click="clickBtn"
     :class="buttonClass"
   >
-    <div @mousedown.stop.prevent class="j-button-icon">
+    <div v-if="icon || iconBtn" @mousedown.stop.prevent class="j-button-icon">
       <slot name="icon"></slot>
     </div>
-    <div @mousedown.stop.prevent class="j-button-text">
+    <div v-if="!iconBtn" @mousedown.stop.prevent class="j-button-text">
       <slot></slot>
     </div>
   </div>
@@ -25,10 +25,12 @@ defineOptions({
 
 const emit = defineEmits(['click']);
 type ButtonProps = {
-  type?: '' | 'primary' | 'warn' | 'info' | 'err' | 'success';
+  type?: '' | 'so-small' | 'primary' | 'warn' | 'info' | 'err' | 'success';
   size?: 'small' | 'medium' | 'large';
   disabled?: boolean;
   btnType?: 'btn' | 'text' | 'icon';
+  icon?: string | null;
+  iconBtn?: boolean;
 };
 
 const vWr = msdWr;
@@ -36,11 +38,22 @@ const vWr = msdWr;
 const props = withDefaults(defineProps<ButtonProps>(), {
   type: '',
   size: 'medium',
-  disabled: false
+  disabled: false,
+  icon: null,
+  iconBtn: false
 });
 
 const buttonClass = computed(() => {
-  return [props.type, props.size, props.disabled ? 'disabled' : ''];
+  const classs: string[] = [props.type, props.size];
+  if (props.disabled) {
+    classs.push('disabled');
+  }
+
+  if (props.iconBtn) {
+    classs.push('icon-btn');
+  }
+
+  return classs;
 });
 
 const clickBtn = (e: MouseEvent) => {

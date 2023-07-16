@@ -8,6 +8,7 @@
         class="j-ipt"
         :type="type"
         required
+        :style="inputStyles"
       />
 
       <div :style="{ ...labelStyles }" class="j-ipt-label">
@@ -16,11 +17,15 @@
       <div class="j-jpt-border-bottom"></div>
       <Transition name="scale">
         <div
-          @click="iptValue = ''"
           v-if="showClearTigger"
+          ref="clearTiggerRef"
           class="claer-tigger-icon"
         >
-          X
+          <slot name="clear">
+            <Button size="so-small" @click="iptValue = ''" icon-btn>
+              <template #icon> X </template>
+            </Button>
+          </slot>
         </div>
       </Transition>
     </div>
@@ -28,8 +33,9 @@
 </template>
 
 <script setup lang="ts">
-import { StyleValue, computed } from 'vue';
+import { StyleValue, computed, ref } from 'vue';
 import './style/index.scss';
+import Button from '../button';
 defineOptions({
   name: 'j-input'
 });
@@ -46,6 +52,8 @@ type InputProps = {
 };
 
 const emit = defineEmits(['update:modelValue']);
+
+const clearTiggerRef = ref<HTMLElement>();
 
 const props = withDefaults(defineProps<InputProps>(), {
   modelValue: '',
@@ -98,6 +106,20 @@ const showClearTigger = computed(() => {
   return (
     iptValue.value && !props.readonly && !props.disabled && props.clearable
   );
+});
+
+const inputStyles = computed(() => {
+  const res: StyleValue = {};
+
+  if (showClearTigger.value) {
+    const clearTiggerRefVal = clearTiggerRef.value;
+    if (clearTiggerRefVal) {
+      const clearTiggerWidth = clearTiggerRefVal.clientWidth;
+      res.marginRight = `${clearTiggerWidth}px`;
+    }
+  }
+
+  return res;
 });
 </script>
 

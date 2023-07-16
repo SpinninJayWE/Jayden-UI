@@ -27,6 +27,22 @@
     <j-button type="success">成功按钮</j-button>
     &nbsp;
     <j-button disabled type="success">禁用按钮</j-button>
+    <h3>按钮图标 Icon Btn</h3>
+    <j-button :size="'so-small'" icon-btn>
+      <template #icon> X </template>
+    </j-button>
+    &nbsp;
+    <j-button :size="'small'" icon-btn type="primary">
+      <template #icon> X </template>
+    </j-button>
+    &nbsp;
+    <j-button icon-btn type="warn">
+      <template #icon> X </template>
+    </j-button>
+    &nbsp;
+    <j-button :size="'large'" icon-btn :type="'success'">
+      <template #icon> X </template>
+    </j-button>
   </div>
 </template>
 
