@@ -16,7 +16,9 @@
                 {{ title }}
               </slot>
             </div>
-            <div @click="visable = false" class="close">x</div>
+            <div @click="visable = false" class="close">
+              <Icon :icon="'icon-close'" />
+            </div>
           </div>
           <div class="content">
             <slot></slot>
@@ -40,6 +42,7 @@ import Button from '../button';
 import { ClickWr } from 'jayden-ui-directives';
 import './style/index.scss';
 import useModal from './hooks/use-modal';
+import { Icon } from '..';
 defineOptions({
   name: 'j-modal'
 });

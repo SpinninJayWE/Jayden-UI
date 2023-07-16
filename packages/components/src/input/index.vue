@@ -22,8 +22,12 @@
           class="claer-tigger-icon"
         >
           <slot name="clear">
-            <Button size="so-small" @click="iptValue = ''" icon-btn>
-              <template #icon> X </template>
+            <Button
+              size="so-small"
+              @click="iptValue = ''"
+              icon-btn
+              icon="icon-close"
+            >
             </Button>
           </slot>
         </div>

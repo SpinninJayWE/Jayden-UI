@@ -5,10 +5,14 @@
     class="j-button"
     @click="clickBtn"
     :class="buttonClass"
+    :style="buttonStyles"
   >
-    <div v-if="icon || iconBtn" @mousedown.stop.prevent class="j-button-icon">
-      <slot name="icon"></slot>
-    </div>
+    <slot name="icon">
+      <div v-if="icon || iconBtn" @mousedown.stop.prevent class="j-button-icon">
+        <Icon :size="size" :icon="icon" />
+      </div>
+    </slot>
+
     <div v-if="!iconBtn" @mousedown.stop.prevent class="j-button-text">
       <slot></slot>
     </div>
@@ -18,19 +22,22 @@
 <script lang="ts" setup>
 import './style/index.scss';
 import { msdWr } from 'jayden-ui-directives';
-import { computed } from 'vue';
+import { StyleValue, computed } from 'vue';
+import { Icon } from '..';
+import { IconNames } from '../icon/types';
 defineOptions({
   name: 'j-button'
 });
 
 const emit = defineEmits(['click']);
 type ButtonProps = {
-  type?: '' | 'so-small' | 'primary' | 'warn' | 'info' | 'err' | 'success';
-  size?: 'small' | 'medium' | 'large';
+  type?: '' | 'primary' | 'warn' | 'info' | 'err' | 'success';
+  size?: 'so-small' | 'small' | 'medium' | 'large';
   disabled?: boolean;
   btnType?: 'btn' | 'text' | 'icon';
-  icon?: string | null;
+  icon?: IconNames | null;
   iconBtn?: boolean;
+  block?: boolean;
 };
 
 const vWr = msdWr;
@@ -40,7 +47,8 @@ const props = withDefaults(defineProps<ButtonProps>(), {
   size: 'medium',
   disabled: false,
   icon: null,
-  iconBtn: false
+  iconBtn: false,
+  block: false
 });
 
 const buttonClass = computed(() => {
@@ -54,6 +62,14 @@ const buttonClass = computed(() => {
   }
 
   return classs;
+});
+
+const buttonStyles = computed(() => {
+  const styles: StyleValue = {};
+  if (props.block) {
+    styles.display = 'flex';
+  }
+  return styles;
 });
 
 const clickBtn = (e: MouseEvent) => {
