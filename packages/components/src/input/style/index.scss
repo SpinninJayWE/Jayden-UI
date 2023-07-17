@@ -13,6 +13,7 @@
   }
 
   .j-ipt-control {
+    position: relative;
     display: flex;
     width: 100%;
     box-sizing: border-box;
@@ -31,6 +32,19 @@
         transform: scaleX(1);
         opacity: 1;
       }
+    }
+  }
+
+  .j-ipt-details {
+    padding: 6px 4px 0;
+    box-sizing: border-box;
+    font-size: $font-size-ssm;
+    color: $text-color;
+    &.Success {
+      color: $success-color;
+    }
+    &.Failure {
+      color: $err-color;
     }
   }
 
@@ -67,6 +81,12 @@
     pointer-events: none;
     transition: $ipt-tranfrom-transition;
     transition-property: all;
+    &.Success {
+      color: $success-color;
+    }
+    &.Failure {
+      color: $err-color;
+    }
   }
 
   .j-ipt-control input:focus + .j-ipt-label,
@@ -87,6 +107,12 @@
     opacity: 0.4;
     transition: $ipt-tranfrom-transition;
     transition-property: all;
+    &.Success {
+      background-color: $success-color;
+    }
+    &.Failure {
+      background-color: $err-color;
+    }
   }
 
   &.size-small {

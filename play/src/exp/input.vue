@@ -17,6 +17,16 @@
     <j-input block v-model="ipt" label="Medium"></j-input>
     <h3>清除按钮 Clearable</h3>
     <j-input v-model="ipt" clearable label="Clearable"></j-input>
+    <h3>自定义校验器 CustomValidator</h3>
+    <j-input
+      :rules="[
+        (val) => !!val || '不能为空',
+        (val) => !((val as string).length < 6) || '不能小于6位数'
+      ]"
+      v-model="ipt"
+      clearable
+      label="CustomValidator"
+    ></j-input>
   </div>
 </template>
 

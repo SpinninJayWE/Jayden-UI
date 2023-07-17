@@ -2,19 +2,24 @@
   <div class="j-input" :class="iptClass">
     <div class="j-ipt-control">
       <input
+        ref="inputRef"
         :disabled="disabled || readonly"
         :value="iptValue"
-        @input="handleInput"
+        @input="onInput"
+        @blur="onBlur"
         class="j-ipt"
         :type="type"
         required
         :style="inputStyles"
       />
-
-      <div :style="{ ...labelStyles }" class="j-ipt-label">
+      <div
+        :style="{ ...labelStyles }"
+        class="j-ipt-label"
+        :class="[validationStatus]"
+      >
         {{ props.label }}
       </div>
-      <div class="j-jpt-border-bottom"></div>
+      <div class="j-jpt-border-bottom" :class="[validationStatus]"></div>
       <Transition name="scale">
         <div
           v-if="showClearTigger"
@@ -24,7 +29,7 @@
           <slot name="clear">
             <Button
               size="so-small"
-              @click="iptValue = ''"
+              @click="clearInput"
               icon-btn
               icon="icon-close"
             >
@@ -33,18 +38,31 @@
         </div>
       </Transition>
     </div>
+    <div
+      v-if="showIssueDetails"
+      class="j-ipt-details"
+      :class="[validationStatus]"
+    >
+      {{ validationStatus }}
+      &nbsp;
+      {{ validationErrorMessage }}
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { StyleValue, computed, ref } from 'vue';
 import './style/index.scss';
 import Button from '../button';
+import useInput from './hooks/use-input';
+import { Rule } from '../../types/index';
+import { useInputControls } from '../../hooks/from-controls';
+import { ref } from 'vue';
+
 defineOptions({
   name: 'j-input'
 });
 
-type InputProps = {
+export type InputProps = {
   modelValue: string | number;
   type?: 'text' | 'password';
   label?: string;
@@ -53,11 +71,10 @@ type InputProps = {
   readonly?: boolean;
   block?: boolean;
   clearable?: boolean;
+  rules?: ((val?: string | number) => Rule)[] | null;
 };
 
 const emit = defineEmits(['update:modelValue']);
-
-const clearTiggerRef = ref<HTMLElement>();
 
 const props = withDefaults(defineProps<InputProps>(), {
   modelValue: '',
@@ -67,64 +84,50 @@ const props = withDefaults(defineProps<InputProps>(), {
   disabled: false,
   readonly: false,
   block: false,
-  clearable: false
+  clearable: false,
+  rules: null
 });
 
-const iptValue = computed({
-  get() {
-    return props.modelValue;
+const inputRef = ref<HTMLInputElement>();
+
+const {
+  handleInput,
+  clearTiggerRef,
+  iptValue,
+  iptClass,
+  labelStyles,
+  showClearTigger,
+  inputStyles
+} = useInput(props, emit);
+
+const {
+  showIssueDetails,
+  validationStatus,
+  validationErrorMessage,
+  verifyRules,
+  clearRules
+} = useInputControls(
+  {
+    disabled: props.disabled,
+    readonly: props.readonly,
+    rules: props.rules
   },
-  set(value) {
-    emit('update:modelValue', value);
-  }
-});
+  iptValue
+);
 
-function handleInput(e: Event) {
-  const target = e.target as HTMLInputElement;
-  iptValue.value = target.value;
-}
+const onInput = (e: Event) => {
+  const targetVal = handleInput(e);
+  verifyRules(targetVal);
+};
 
-const iptClass = computed(() => {
-  const res = ['size-' + props.size];
-  if (props.disabled) {
-    res.push('disabled');
-  }
+const onBlur = (e: Event) => {
+  verifyRules();
+};
 
-  if (props.block) {
-    res.push('j-block-ipt');
-  }
-  return res;
-});
-
-const labelStyles = computed(() => {
-  const res: StyleValue = {};
-
-  if ((props.disabled || props.readonly) && iptValue.value) {
-    res.transform = 'translate(-5px, -16px)';
-  }
-
-  return res;
-});
-
-const showClearTigger = computed(() => {
-  return (
-    iptValue.value && !props.readonly && !props.disabled && props.clearable
-  );
-});
-
-const inputStyles = computed(() => {
-  const res: StyleValue = {};
-
-  if (showClearTigger.value) {
-    const clearTiggerRefVal = clearTiggerRef.value;
-    if (clearTiggerRefVal) {
-      const clearTiggerWidth = clearTiggerRefVal.clientWidth;
-      res.marginRight = `${clearTiggerWidth}px`;
-    }
-  }
-
-  return res;
-});
+const clearInput = () => {
+  iptValue.value = '';
+  clearRules();
+};
 </script>
 
 <style scoped></style>
