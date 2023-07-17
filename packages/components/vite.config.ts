@@ -3,6 +3,8 @@ import vue from '@vitejs/plugin-vue';
 import dts from 'vite-plugin-dts';
 // @ts-ignore
 import DefineOptions from 'unplugin-vue-define-options/vite';
+import vueJsx from '@vitejs/plugin-vue-jsx';
+
 export default defineConfig({
   build: {
     outDir: '../jayden-ui/es',
@@ -43,6 +45,7 @@ export default defineConfig({
   },
   plugins: [
     vue(),
+    vueJsx(),
     DefineOptions(),
     dts({
       entryRoot: 'src',

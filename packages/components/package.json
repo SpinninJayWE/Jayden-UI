@@ -13,5 +13,8 @@
   "dependencies": {
     "jayden-ui-directives": "workspace:^",
     "jayden-ui-utils": "^1.0.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue-jsx": "^3.0.1"
   }
 }

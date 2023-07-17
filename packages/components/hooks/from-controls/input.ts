@@ -1,11 +1,8 @@
-import { Rule, ValidationStatus } from '../../types';
+import { Rule, RuleFuncs, ValidationStatus } from '../../types/validator';
 import { WritableComputedRef, computed, ref } from 'vue';
 
-const checkRulesPass = (
-  rules: ((val?: string | number) => Rule)[],
-  modeValue: string | number
-): Rule => {
-  if (rules.length === 0) return true;
+const checkRulesPass = (rules: RuleFuncs, modeValue: string | number): Rule => {
+  if (!rules || rules.length === 0) return true;
   let res: Rule = true;
 
   for (const rule of rules) {
@@ -22,7 +19,7 @@ export default function useInputControls(
   props: {
     disabled: boolean;
     readonly: boolean;
-    rules?: ((val?: string | number) => Rule)[] | null;
+    rules?: RuleFuncs;
   },
   modelValue: WritableComputedRef<string | number>
 ) {

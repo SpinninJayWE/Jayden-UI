@@ -6,6 +6,8 @@ export enum ValidationStatus {
 
 export type Rule = string | boolean;
 
+export type RuleFuncs = ((val?: string | number) => Rule)[] | null;
+
 export type RulePassInfo = {
   pass: boolean;
   message: string;

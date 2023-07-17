@@ -1,9 +1,10 @@
 <template>
   <div class="app">
-    <Button />
+    <!-- <Button />
     <Modal />
     <Input />
-    <Icon />
+    <Icon /> -->
+    <j-select></j-select>
   </div>
 </template>
 <script setup lang="ts">

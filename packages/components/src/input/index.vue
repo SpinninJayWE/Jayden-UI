@@ -54,7 +54,7 @@
 import './style/index.scss';
 import Button from '../button';
 import useInput from './hooks/use-input';
-import { Rule } from '../../types/index';
+import { RuleFuncs } from '../../types/validator';
 import { useInputControls } from '../../hooks/from-controls';
 import { ref } from 'vue';
 
@@ -71,7 +71,7 @@ export type InputProps = {
   readonly?: boolean;
   block?: boolean;
   clearable?: boolean;
-  rules?: ((val?: string | number) => Rule)[] | null;
+  rules?: RuleFuncs;
 };
 
 const emit = defineEmits(['update:modelValue']);
@@ -117,11 +117,12 @@ const {
 
 const onInput = (e: Event) => {
   const targetVal = handleInput(e);
+
   verifyRules(targetVal);
 };
 
 const onBlur = (e: Event) => {
-  verifyRules();
+  verifyRules((e.target as HTMLInputElement).value);
 };
 
 const clearInput = () => {
