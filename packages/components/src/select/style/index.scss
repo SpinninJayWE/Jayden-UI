@@ -1,0 +1,29 @@
+@use '../../../styles/common/variables.scss' as *;
+@use '../../../styles/common/minxin.scss' as *;
+@use '../../../styles/common/transition.scss' as *;
+.j-select {
+  display: inline-block;
+  width: 220px;
+  cursor: pointer;
+  position: relative;
+  .j-select-inner {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 25px;
+    gap: 6px;
+    .prefix,
+    .suffix {
+      width: 25px;
+      height: 100%;
+    }
+    .suffix {
+      text-align: right;
+    }
+
+    .body {
+      flex: 1;
+      height: 100%;
+    }
+  }
+}

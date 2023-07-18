@@ -1,17 +1,19 @@
 <template>
   <div class="j-input" :class="iptClass">
     <div class="j-ipt-control">
-      <input
-        ref="inputRef"
-        :disabled="disabled || readonly"
-        :value="iptValue"
-        @input="onInput"
-        @blur="onBlur"
-        class="j-ipt"
-        :type="type"
-        required
-        :style="inputStyles"
-      />
+      <slot name="input">
+        <input
+          ref="inputRef"
+          :disabled="disabled || readonly"
+          :value="iptValue"
+          @input="onInput"
+          @blur="onBlur"
+          class="j-ipt"
+          :type="type"
+          required
+          :style="inputStyles"
+        />
+      </slot>
       <div
         :style="{ ...labelStyles }"
         class="j-ipt-label"
@@ -72,9 +74,10 @@ export type InputProps = {
   block?: boolean;
   clearable?: boolean;
   rules?: RuleFuncs;
+  fromSelect?: boolean;
 };
 
-const emit = defineEmits(['update:modelValue']);
+const emit = defineEmits(['update:modelValue', 'clear']);
 
 const props = withDefaults(defineProps<InputProps>(), {
   modelValue: '',
@@ -85,7 +88,8 @@ const props = withDefaults(defineProps<InputProps>(), {
   readonly: false,
   block: false,
   clearable: false,
-  rules: null
+  rules: null,
+  fromSelect: false
 });
 
 const inputRef = ref<HTMLInputElement>();
@@ -128,7 +132,13 @@ const onBlur = (e: Event) => {
 const clearInput = () => {
   iptValue.value = '';
   clearRules();
+  emit('clear');
 };
+
+defineExpose({
+  verifyRules,
+  clearRules
+});
 </script>
 
 <style scoped></style>

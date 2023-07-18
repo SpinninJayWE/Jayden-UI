@@ -42,8 +42,13 @@ export default function useInput(props: InputProps, emit: any) {
   });
 
   const showClearTigger = computed(() => {
-    return (
-      iptValue.value && !props.readonly && !props.disabled && props.clearable
+    return !!(
+      iptValue.value &&
+      (!props.readonly ||
+        !props.fromSelect ||
+        (props.readonly && props.fromSelect)) &&
+      !props.disabled &&
+      props.clearable
     );
   });
 

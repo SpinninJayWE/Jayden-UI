@@ -1,5 +1,4 @@
 import type { App, Plugin } from 'vue';
-import { Rule } from '../types';
 type SFCWithInstall<T> = T & Plugin;
 const withInstall = <T>(comp: T) => {
   (comp as SFCWithInstall<T>).install = (app: App) => {
@@ -19,4 +18,18 @@ const isEmptyObj = (obj: object): boolean => {
   return true;
 };
 
-export { withInstall, isEmptyObj };
+function isPrimitive(
+  value: string | number | boolean | symbol | null | undefined
+) {
+  return (
+    typeof value === 'string' ||
+    typeof value === 'number' ||
+    typeof value === 'boolean' ||
+    typeof value === 'symbol' ||
+    value === null ||
+    value === undefined
+  );
+}
+
+export { withInstall, isEmptyObj, isPrimitive };
+export { default as initDefaultProps } from './props';
