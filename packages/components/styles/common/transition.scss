@@ -61,7 +61,7 @@
 .slider-bottom-enter-from,
 .slider-bottom-leave-to {
   opacity: 0;
-  transform: translateY(150px);
+  transform: translateY(-150px);
 }
 
 .slider-left-enter-active,

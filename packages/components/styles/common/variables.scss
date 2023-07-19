@@ -62,8 +62,9 @@ $font-size-lg: 1.25rem;
 $font-size-md: 1rem;
 $font-size-sm: 0.875rem;
 
-$modal-zdx: 1200;
+$modal-zdx: 1500;
 $popover-zdx: 1100;
+$referece-zdx: 1200;
 
 $btn-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
 $btn-shadow-active:
@@ -74,3 +75,8 @@ $btn-shadow-hover:
   0 2px 4px rgba(0, 0, 0, 0.2),
   0 4px 8px rgba(0, 0, 0, 0.1),
   0 8px 16px rgba(0, 0, 0, 0.05);
+
+$popover-shadow:
+  0 6px 16px 0 rgba(0, 0, 0, 0.08),
+  0 3px 6px -4px rgba(0, 0, 0, 0.12),
+  0 9px 28px 8px rgba(0, 0, 0, 0.05);

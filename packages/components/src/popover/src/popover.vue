@@ -3,10 +3,10 @@
     <slot name="reference"></slot>
   </div>
   <Teleport to="body">
-    <Transition :name="`slider-${placement}`">
+    <Transition :name="'scale' || `slider-${placement}`">
       <div
         ref="popoverRef"
-        v-show="$slots.default && state.showPopover"
+        v-if="$slots.default && state.showPopover"
         class="j-popover-content"
         :style="popoverContentStyles"
       >
