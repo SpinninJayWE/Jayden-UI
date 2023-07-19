@@ -1,0 +1,15 @@
+@use '../../../styles/common/variables.scss' as *;
+@use '../../../styles/common/minxin.scss' as *;
+@use '../../../styles/common/transition.scss' as *;
+
+.reference-content {
+  display: inline-block;
+}
+
+.j-popover-content {
+  position: absolute;
+  left: 195px;
+  top: 195px;
+  background-color: $bgc-color;
+  z-index: $popover-zdx;
+}

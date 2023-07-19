@@ -7,6 +7,7 @@ declare module '@vue/runtime-core' {
     JTable: typeof components.Table;
     jInput: typeof components.Input;
     JSelect: typeof components.Select;
+    JPopover: typeof components.Popover;
   }
 }
 export {};

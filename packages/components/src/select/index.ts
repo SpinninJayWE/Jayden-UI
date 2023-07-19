@@ -1,4 +1,4 @@
-import _Select from './src/index';
-import { withInstall } from 'jayden-ui-utils';
+import _Select from './src/index.vue';
+import { withInstall } from '../../utils/index';
 export const Select = withInstall(_Select);
 export default Select;
