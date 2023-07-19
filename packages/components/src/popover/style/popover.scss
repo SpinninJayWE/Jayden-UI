@@ -7,9 +7,17 @@
 }
 
 .j-popover-content {
+  box-sizing: border-box;
   position: absolute;
-  left: 195px;
-  top: 195px;
-  background-color: $bgc-color;
+  left: 0;
+  top: 0;
   z-index: $popover-zdx;
+  .j-popover-inner {
+    padding: 8px 6px;
+    background-color: $bgc-color;
+    border-radius: 4px;
+    box-shadow:
+      0 6px 8px rgba(0, 0, 0, 0.2),
+      0 8px 10px rgba(0, 0, 0, 0.1);
+  }
 }

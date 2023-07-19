@@ -27,11 +27,11 @@
         </div>
       </div>
     </div>
-    <Transition name="slider-y">
+    <!-- <Transition name="slider-y">
       <div v-show="state.expandSelectOptions" class="j-select-dropdown-wrapper">
         <Options />
       </div>
-    </Transition>
+    </Transition> -->
   </div>
 </template>
 

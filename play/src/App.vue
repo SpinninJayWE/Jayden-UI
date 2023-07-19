@@ -3,12 +3,12 @@
     <!-- <Button /> -->
     <!-- <Modal /> -->
     <!-- <Input /> -->
-    <!-- <Icon /> -->
-    <!-- <div class="content-container">
+    <Icon />
+    <div class="content-container">
       <h2>Select 下拉框</h2>
       <h3>基础演示</h3>
       <j-select v-model:select="select"> </j-select>
-    </div> -->
+    </div>
     <div class="content-container">
       <h2>Popover</h2>
       <h3>基础演示</h3>
@@ -16,13 +16,14 @@
         <template #reference>
           <j-button>Click Show Popover</j-button>
         </template>
-        <div>
+        <template #default> hello i'm your teacher </template>
+        <!-- <div>
           <j-button block>111</j-button>
           <br />
-          <j-button block>111</j-button>
+          <j-button :type="'info'" block>111</j-button>
           <br />
           <j-button block>111</j-button>
-        </div>
+        </div> -->
       </j-popover>
     </div>
   </div>

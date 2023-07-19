@@ -1,21 +1,21 @@
 <template>
-  <div class="j-popover">
-    <div ref="referenceRef" v-if="$slots.reference" class="reference-content">
-      <slot name="reference"></slot>
-    </div>
-    <Teleport to="body">
-      <Transition name="slider-bottom">
-        <div
-          ref="popoverRef"
-          v-if="$slots.default && state.showPopover"
-          class="j-popover-content"
-          :style="popoverContentStyles"
-        >
+  <div ref="referenceRef" v-if="$slots.reference" class="reference-content">
+    <slot name="reference"></slot>
+  </div>
+  <Teleport to="body">
+    <Transition :name="`slider-${placement}`">
+      <div
+        ref="popoverRef"
+        v-show="$slots.default && state.showPopover"
+        class="j-popover-content"
+        :style="popoverContentStyles"
+      >
+        <div class="j-popover-inner">
           <slot></slot>
         </div>
-      </Transition>
-    </Teleport>
-  </div>
+      </div>
+    </Transition>
+  </Teleport>
 </template>
 
 <script setup lang="ts">
@@ -30,14 +30,16 @@ export type PopoverProps = {
   content?: string;
   width?: number;
   trigger?: 'click' | 'hover' | 'contentmenu';
-  placement: 'top' | 'right' | 'bottom' | 'left';
+  placement?: 'top' | 'right' | 'bottom' | 'left';
+  offset?: [number, number];
 };
 
 const props = withDefaults(defineProps<PopoverProps>(), {
   content: '',
   width: 120,
   trigger: 'click',
-  placement: 'top'
+  placement: 'bottom',
+  offset: [0, 0]
 });
 
 const { state, referenceRef, popoverRef, popoverContentStyles } =
