@@ -10,8 +10,6 @@ import {
 import { PopoverProps } from '../src/popover.vue';
 import { useResizeObserver } from '@vueuse/core';
 
-const popoverDefaultOffset = 15;
-
 function calculatePopoverPosition({
   referenceTop,
   referenceLeft,
@@ -64,8 +62,6 @@ function setPopoverPostion(
   placement: PopoverProps['placement'],
   offset: [number, number]
 ) {
-  // top left right bottom
-
   // 获取参考元素的尺寸和位置信息
   const referenceRect = referenceRefVal.getBoundingClientRect();
   const referenceTop = referenceRect.top + window.pageYOffset;
@@ -90,9 +86,13 @@ function setPopoverPostion(
   });
 
   // 设置弹出框的位置
-  popoverRefVal.style.position = 'absolute';
   popoverRefVal.style.left = left + 'px';
   popoverRefVal.style.top = top + 'px';
+
+  return {
+    left,
+    top
+  };
 }
 
 export default function usePopover(props: PopoverProps) {
@@ -105,27 +105,8 @@ export default function usePopover(props: PopoverProps) {
     showPopover: false
   });
 
-  const popoverContentStyles = computed(() => {
-    const res: StyleValue = {};
-    if (props.width) {
-      res.width = props.width + 'px';
-    }
-    const placement = props.placement;
-
-    const marginOffset = popoverDefaultOffset + 'px';
-    if (placement === 'left') {
-      res.paddingRight = marginOffset;
-    } else if (placement === 'right') {
-      res.paddingLeft = marginOffset;
-    } else if (placement === 'top') {
-      res.paddingBottom = marginOffset;
-    } else if (placement === 'bottom') {
-      res.paddingTop = marginOffset;
-    }
-    return res;
-  });
   onMounted(() => {
-    initPopover();
+    // initPopover();
     const trigger = props.trigger;
     bindTriggerEvent(trigger);
   });
@@ -166,13 +147,14 @@ export default function usePopover(props: PopoverProps) {
   async function showPopover() {
     state.showPopover = true;
     await nextTick();
+
     const referenceRefVal = referenceRef.value as HTMLElement;
     const popoverRefVal = popoverRef.value as HTMLElement;
     setPopoverPostion(
       referenceRefVal,
       popoverRefVal,
       props.placement,
-      props.offset
+      props.offset!
     );
   }
   function hidePopover() {
@@ -193,10 +175,15 @@ export default function usePopover(props: PopoverProps) {
       document.body.appendChild(createPopoverConatainer);
     }
   }
+
+  function handleTsBeforeEnter(el: Element) {}
+
+  function handleTsEnter(el: Element) {}
   return {
     state,
     referenceRef,
     popoverRef,
-    popoverContentStyles
+    handleTsBeforeEnter,
+    handleTsEnter
   };
 }

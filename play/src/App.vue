@@ -14,16 +14,30 @@
       <h3>基础演示</h3>
       <j-popover trigger="hover">
         <template #reference>
-          <j-button>Click Show Popover</j-button>
+          <j-button>Hover Show Popover from bottom</j-button>
         </template>
-        <template #default> hello i'm your teacher </template>
-        <!-- <div>
-          <j-button block>111</j-button>
-          <br />
-          <j-button :type="'info'" block>111</j-button>
-          <br />
-          <j-button block>111</j-button>
-        </div> -->
+        <template #default> Popover content </template>
+      </j-popover>
+      &nbsp;
+      <j-popover placement="right" trigger="hover">
+        <template #reference>
+          <j-button>Hover Show Popover from right</j-button>
+        </template>
+        <template #default> Popover content </template>
+      </j-popover>
+      &nbsp;
+      <j-popover placement="left" trigger="hover">
+        <template #reference>
+          <j-button type="info">Hover Show Popover from left</j-button>
+        </template>
+        <template #default> Popover content </template>
+      </j-popover>
+      &nbsp;
+      <j-popover placement="top" trigger="click">
+        <template #reference>
+          <j-button>Hover Show Popover from top</j-button>
+        </template>
+        <template #default> Popover content </template>
       </j-popover>
     </div>
   </div>
@@ -37,7 +51,7 @@ import { ref } from 'vue';
 
 const select = ref([1]);
 </script>
-<style scoped>
+<style lang="scss" scoped>
 .app {
   padding: 25px;
   box-sizing: border-box;
@@ -47,5 +61,10 @@ const select = ref([1]);
   max-width: 1024px;
   width: 100%;
   margin: 0 auto;
+  :deep() {
+    .reference-content {
+      margin-bottom: 20px;
+    }
+  }
 }
 </style>

@@ -3,7 +3,12 @@
     <slot name="reference"></slot>
   </div>
   <Teleport to="body">
-    <Transition :name="'scale' || `slider-${placement}`">
+    <Transition
+      @before-enter="handleTsBeforeEnter"
+      @enter="handleTsEnter"
+      :name="'scale' || `slider-${placement}`"
+      :duration="{ enter: 3500, leave: 1000 }"
+    >
       <div
         ref="popoverRef"
         v-if="$slots.default && state.showPopover"
@@ -21,6 +26,7 @@
 <script setup lang="ts">
 import '../style/popover.scss';
 import usePopover from '../hooks/use-popover';
+import usePopoverDom from '../hooks/use-popover-dom';
 
 defineOptions({
   name: 'j-popover'
@@ -42,8 +48,10 @@ const props = withDefaults(defineProps<PopoverProps>(), {
   offset: [0, 0]
 });
 
-const { state, referenceRef, popoverRef, popoverContentStyles } =
+const { state, referenceRef, popoverRef, handleTsBeforeEnter, handleTsEnter } =
   usePopover(props);
+
+const { popoverContentStyles } = usePopoverDom(props, referenceRef, popoverRef);
 </script>
 
 <style lang="scss" scoped></style>
