@@ -29,7 +29,7 @@
       </template>
       <template #default> Popover content </template>
     </j-popover>
-    <h3>触发方式 / 双向绑定</h3>
+    <h3>点击触发 / 双向绑定</h3>
     <j-popover placement="top" trigger="click">
       <template #reference>
         <j-button>Click Show Popover from top</j-button>
@@ -39,7 +39,9 @@
     &nbsp;
     <j-popover v-model="showPopover" placement="top" trigger="click">
       <template #reference>
-        <j-button>Click Show Popover from Bidirectional </j-button>
+        <j-button
+          >{{ showPopover }} &nbsp;Click Show Popover from Bidirectional
+        </j-button>
       </template>
       <template #default> Popover content </template>
     </j-popover>

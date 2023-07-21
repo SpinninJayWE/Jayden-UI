@@ -1,6 +1,7 @@
-import { computed, reactive, toRaw } from 'vue';
+import { computed, reactive } from 'vue';
 import { SelectProps } from '../src/index.vue';
 import { isArray } from '../../../utils';
+import { IconName } from '../../icon/types';
 
 export default function useInput(props: SelectProps, emit: any) {
   const iconMap = {
@@ -22,16 +23,10 @@ export default function useInput(props: SelectProps, emit: any) {
   });
 
   const arrowIcon = computed(() => {
-    return state.visbaleDropOptions ? iconMap.up : iconMap.down;
+    return state.visbaleDropOptions
+      ? (iconMap.up as IconName)
+      : (iconMap.down as IconName);
   });
-
-  function handleClickOutside(isOutside: boolean) {
-    // if (isOutside) {
-    //   state.visbaleDropOptions = false;
-    // } else {
-    //   state.visbaleDropOptions = true;
-    // }
-  }
 
   function handleClear() {
     if (props.multiple && Array.isArray(selectVal.value)) {
@@ -39,11 +34,13 @@ export default function useInput(props: SelectProps, emit: any) {
     } else {
       selectVal.value = undefined;
     }
+    state.visbaleDropOptions = false;
   }
 
   function setSelect(val: any) {
     if (!props.multiple) {
       selectVal.value = val;
+      state.visbaleDropOptions = false;
     } else if (Array.isArray(selectVal.value)) {
       const isInSelect = selectVal.value.findIndex((item) => item === val);
       if (isInSelect === -1) {
@@ -62,7 +59,6 @@ export default function useInput(props: SelectProps, emit: any) {
   return {
     onOptionSelect,
     handleClear,
-    handleClickOutside,
     selectVal,
     state,
     arrowIcon

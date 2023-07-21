@@ -90,4 +90,5 @@ export type IconNames =
   | 'icon-left-arrow'
   | 'icon-lower-left-arrow'
   | 'icon-lock'
-  | 'icon-more';
+  | 'icon-more'
+  | 'icon-disabled';

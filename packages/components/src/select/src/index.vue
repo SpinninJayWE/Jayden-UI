@@ -3,7 +3,6 @@
     <template #reference>
       <div
         ref="selectRef"
-        v-os.j-select-dropdown="handleClickOutside"
         class="j-select"
         :class="[...selectContainerClass]"
         v-bind="$attrs"
@@ -52,7 +51,7 @@ import { ComponentSize } from '../../../constant/index';
 import useInput from '../hooks/use-select';
 import { RuleFuncs } from '@/types';
 import { Icon, Button, Popover } from '../../index';
-import { clickOutside, msdWr } from 'jayden-ui-directives';
+import { msdWr } from 'jayden-ui-directives';
 import Options from './options.vue';
 import useSelectDom from '../hooks/use-select-dom';
 import { isArray } from '../../../utils';
@@ -66,6 +65,7 @@ type Basicdata = string | number | boolean | null | undefined;
 type OptionsItem = {
   label: Basicdata;
   value: Basicdata;
+  disabled?: boolean;
 };
 export type SelectProps = {
   select?: Basicdata | Basicdata[];
@@ -78,7 +78,6 @@ export type SelectProps = {
   options?: OptionsItem[];
 };
 
-const vOs = clickOutside;
 const vWr = msdWr;
 
 const emit = defineEmits(['update:select', 'onChange']);
@@ -93,14 +92,10 @@ const props = withDefaults(defineProps<SelectProps>(), {
   options: []
 });
 
-const {
-  onOptionSelect,
-  handleClear,
-  handleClickOutside,
-  state,
-  arrowIcon,
-  selectVal
-} = useInput(props, emit);
+const { onOptionSelect, handleClear, state, arrowIcon, selectVal } = useInput(
+  props,
+  emit
+);
 
 const { selectRef, popoverWidth, selectConatinerStyles, selectContainerClass } =
   useSelectDom(props, emit);

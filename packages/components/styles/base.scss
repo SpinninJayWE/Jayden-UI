@@ -6,7 +6,7 @@
   transform: translate(-50%, -50%);
   width: 0;
   padding-top: 0;
-  background-color: $text-color-light;
+  background-color: $ripple-color;
   border-radius: 50%;
   animation: ripple 0.75s linear 1;
   pointer-events: none;

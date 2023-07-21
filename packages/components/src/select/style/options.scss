@@ -34,6 +34,10 @@
     &.selected:hover {
       background-color: $slt-op-selected-hover-bgc-color !important;
     }
+    &.disabled {
+      background-color: $slt-op-disabled-bgc-color;
+      cursor: not-allowed;
+    }
 
     .label-text,
     .icon {

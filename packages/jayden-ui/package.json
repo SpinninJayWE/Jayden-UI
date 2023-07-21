@@ -27,7 +27,7 @@
     "url": "git@github.com:SpinninJayWE/Jayden-UI.git"
   },
   "dependencies": {
-    "jayden-ui-directives": "^1.0.5",
+    "jayden-ui-directives": "^1.0.6",
     "jayden-ui-utils": "workspace:^"
   }
 }

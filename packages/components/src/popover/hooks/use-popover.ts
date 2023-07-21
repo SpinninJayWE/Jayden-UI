@@ -3,12 +3,29 @@ import {
   computed,
   onMounted,
   onUnmounted,
-  reactive,
   ref,
   nextTick
 } from 'vue';
 import { PopoverProps } from '../src/popover.vue';
 import { useResizeObserver } from '@vueuse/core';
+
+// function initPopover() {
+//   const popoverContainer = document.querySelector('#popover-container');
+//   if (!popoverContainer) {
+//     let createPopoverConatainer = document.createElement('div');
+//     createPopoverConatainer.id = '#popover-container';
+//     document.body.appendChild(createPopoverConatainer);
+//     console.log('init popover');
+//   }
+// }
+
+// initPopover();
+
+function getViewportSize() {
+  const width = document.documentElement.clientWidth || window.innerWidth;
+  const height = document.documentElement.clientHeight || window.innerHeight;
+  return { width, height };
+}
 
 function calculatePopoverPosition({
   referenceTop,
@@ -56,7 +73,7 @@ function calculatePopoverPosition({
   return { left, top };
 }
 
-function setPopoverPostion(
+function setPopoverPosition(
   referenceRefVal: HTMLElement,
   popoverRefVal: HTMLElement,
   placement: PopoverProps['placement'],
@@ -101,27 +118,17 @@ export default function usePopover(props: PopoverProps, emit: any) {
 
   useResizeObserver(document.body, handleResize);
 
-  const popoverVisable = props.modelValue
-    ? computed({
-        get() {
-          return props.modelValue;
-        },
-        set(value) {
-          emit('update:modelValue', value);
-        }
-      })
-    : ref(false);
-
-  onMounted(() => {
-    // initPopover();
-    const trigger = props.trigger;
-    bindTriggerEvent(trigger);
-  });
-
-  onUnmounted(() => {
-    const trigger = props.trigger;
-    removeTriggerEvent(trigger);
-  });
+  const popoverVisable =
+    typeof props.modelValue === 'boolean'
+      ? computed({
+          get() {
+            return props.modelValue;
+          },
+          set(value) {
+            emit('update:modelValue', value);
+          }
+        })
+      : ref(false);
 
   function bindTriggerEvent(trigger: PopoverProps['trigger']) {
     const referenceRefVal = referenceRef.value;
@@ -147,18 +154,27 @@ export default function usePopover(props: PopoverProps, emit: any) {
     }
   }
 
+  onMounted(() => {
+    const trigger = props.trigger;
+    bindTriggerEvent(trigger);
+  });
+
+  onUnmounted(() => {
+    const trigger = props.trigger;
+    removeTriggerEvent(trigger);
+  });
+
   function togglePopover() {
     popoverVisable.value ? hidePopover() : showPopover();
   }
 
   async function showPopover() {
     popoverVisable.value = true;
-
     await nextTick();
 
     const referenceRefVal = referenceRef.value as HTMLElement;
     const popoverRefVal = popoverRef.value as HTMLElement;
-    setPopoverPostion(
+    setPopoverPosition(
       referenceRefVal,
       popoverRefVal,
       props.placement,
@@ -175,23 +191,15 @@ export default function usePopover(props: PopoverProps, emit: any) {
     }
   }
 
-  function initPopover() {
-    const popoverContainer = document.querySelector('#popover-container');
-    if (!popoverContainer) {
-      let createPopoverConatainer = document.createElement('div');
-      createPopoverConatainer.id = '#popover-container';
-      document.body.appendChild(createPopoverConatainer);
-    }
+  function teleportContainer() {
+    const popoverContainer = document.querySelector('##popover-container');
+    return popoverContainer?.id || 'body';
   }
 
-  function handleTsBeforeEnter(el: Element) {}
-
-  function handleTsEnter(el: Element) {}
   return {
+    teleportContainer,
     popoverVisable,
     referenceRef,
-    popoverRef,
-    handleTsBeforeEnter,
-    handleTsEnter
+    popoverRef
   };
 }

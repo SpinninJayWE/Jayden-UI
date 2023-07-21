@@ -1,10 +1,10 @@
 <template>
   <div class="app">
-    <!-- <Button />
-    <Modal />
-    <Input />
-    <Icon />
-    <Popover /> -->
+    <!-- <Button /> -->
+    <!-- <Modal /> -->
+    <!-- <Input /> -->
+    <!-- <Icon /> -->
+    <!-- <Popover /> -->
     <div class="content-container">
       <h2>Select 下拉框</h2>
       <h3>默认 / 单选</h3>
@@ -28,9 +28,23 @@ import Icon from './exp/icon.vue';
 import Popover from './exp/popover.vue';
 import { ref } from 'vue';
 
+function gOptions() {
+  const options = [];
+
+  for (let i = 0; i < 10; i++) {
+    const option = {
+      label: `选项${i + 1}`,
+      value: Math.floor(Math.random() * 100),
+      disabled: i % 2 === 0
+    };
+    options.push(option);
+  }
+
+  return options;
+}
 const select = ref('');
 const select2 = ref([]);
-const options = ref([]);
+const options = ref(gOptions());
 </script>
 <style lang="scss" scoped>
 .app {

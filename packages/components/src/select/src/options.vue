@@ -11,7 +11,7 @@
         v-for="item in options"
         :key="generateOptionItemKey(item.value)"
         :data-itemkey="generateOptionItemKey(item.value)"
-        :class="{ selected: itemSelected(item) }"
+        :class="{ selected: itemSelected(item), disabled: item.disabled }"
       >
         <div @click.stop class="label-text">
           {{ item.label }}
@@ -21,6 +21,10 @@
           class="icon"
           v-if="itemSelected(item)"
           :icon="'icon-selected'"
+        />
+        <Icon
+          v-if="!itemSelected(item) && item.disabled"
+          :icon="'icon-disabled'"
         />
       </div>
     </div>
@@ -52,6 +56,7 @@ type Basicdata = string | number | boolean | null | undefined;
 type OptionsItem = {
   label: Basicdata;
   value: Basicdata;
+  disabled?: boolean;
 };
 interface SelectOptionProps {
   multiple?: boolean;
@@ -75,10 +80,7 @@ const vWr = msdWr;
 
 const optionsFromMap = computed(() => {
   return props.options.reduce((pre, cur) => {
-    return pre.set(
-      typeof cur.value === 'number' ? cur.value + '' : cur.value,
-      cur
-    );
+    return pre.set(cur.value, cur);
   }, new Map());
 });
 
@@ -117,8 +119,10 @@ function handleOptionSelect(e: Event) {
   const optItemTarget = e.target as HTMLElement;
   if (optItemTarget.classList.contains('j-select-options-item')) {
     const optItemKey = optItemTarget.dataset.itemkey;
-
-    emit('select', rocessingValue(optItemKey));
+    const val = rocessingValue(optItemKey);
+    const curOptItemObj = props.options.find((item) => item.value === val);
+    if (curOptItemObj && curOptItemObj.disabled) return;
+    emit('select', val);
   }
 }
 </script>
