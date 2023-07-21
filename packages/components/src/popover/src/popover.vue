@@ -6,12 +6,11 @@
     <Transition
       @before-enter="handleTsBeforeEnter"
       @enter="handleTsEnter"
-      :name="'scale' || `slider-${placement}`"
-      :duration="{ enter: 3500, leave: 1000 }"
+      :name="'fade' || `slider-${placement}`"
     >
       <div
         ref="popoverRef"
-        v-if="$slots.default && state.showPopover"
+        v-if="$slots.default && popoverVisable"
         class="j-popover-content"
         :style="popoverContentStyles"
       >
@@ -38,20 +37,29 @@ export type PopoverProps = {
   trigger?: 'click' | 'hover' | 'contentmenu';
   placement?: 'top' | 'right' | 'bottom' | 'left';
   offset?: [number, number];
+  modelValue?: boolean;
 };
+
+const emit = defineEmits(['update:modelValue']);
 
 const props = withDefaults(defineProps<PopoverProps>(), {
   content: '',
   width: 120,
   trigger: 'click',
   placement: 'bottom',
-  offset: [0, 0]
+  offset: [0, 0],
+  modelValue: false
 });
 
-const { state, referenceRef, popoverRef, handleTsBeforeEnter, handleTsEnter } =
-  usePopover(props);
+const {
+  popoverVisable,
+  referenceRef,
+  popoverRef,
+  handleTsBeforeEnter,
+  handleTsEnter
+} = usePopover(props, emit);
 
-const { popoverContentStyles } = usePopoverDom(props, referenceRef, popoverRef);
+const { popoverContentStyles } = usePopoverDom(props);
 </script>
 
 <style lang="scss" scoped></style>

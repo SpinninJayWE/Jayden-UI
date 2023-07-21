@@ -1,55 +1,70 @@
-import { StyleValue, computed, reactive } from 'vue';
+import { computed, reactive, toRaw } from 'vue';
 import { SelectProps } from '../src/index.vue';
-import { componentSizeMap } from '../../../constant/index';
+import { isArray } from '../../../utils';
 
-export default function useInput(props: SelectProps) {
+export default function useInput(props: SelectProps, emit: any) {
   const iconMap = {
     down: 'icon-down',
     up: 'icon-up'
   };
 
+  const selectVal = computed({
+    get() {
+      return props.select;
+    },
+    set(value) {
+      emit('update:select', value);
+    }
+  });
+
   const state = reactive({
-    expandSelectOptions: false
+    visbaleDropOptions: false
   });
 
   const arrowIcon = computed(() => {
-    return state.expandSelectOptions ? iconMap.up : iconMap.down;
-  });
-
-  const selectConatinerStyles = computed(() => {
-    const res: StyleValue = {};
-    if (props.size) {
-      res.height = `${componentSizeMap[props.size]}px`;
-    }
-    if (props.block) {
-      res.width = '100%';
-      res.display = 'block';
-    }
-    return res;
-  });
-
-  const selectContainerClass = computed(() => {
-    const res: string[] = ['size_' + props.size!];
-
-    return res;
+    return state.visbaleDropOptions ? iconMap.up : iconMap.down;
   });
 
   function handleClickOutside(isOutside: boolean) {
-    if (isOutside) {
-      state.expandSelectOptions = false;
+    // if (isOutside) {
+    //   state.visbaleDropOptions = false;
+    // } else {
+    //   state.visbaleDropOptions = true;
+    // }
+  }
+
+  function handleClear() {
+    if (props.multiple && Array.isArray(selectVal.value)) {
+      selectVal.value.length = 0;
     } else {
-      state.expandSelectOptions = true;
+      selectVal.value = undefined;
     }
   }
 
-  function handleClear() {}
+  function setSelect(val: any) {
+    if (!props.multiple) {
+      selectVal.value = val;
+    } else if (Array.isArray(selectVal.value)) {
+      const isInSelect = selectVal.value.findIndex((item) => item === val);
+      if (isInSelect === -1) {
+        selectVal.value.push(val);
+      } else {
+        selectVal.value.splice(isInSelect, 1);
+      }
+    }
+  }
+
+  function onOptionSelect(val: any) {
+    setSelect(val);
+    emit('onChange', selectVal.value);
+  }
 
   return {
+    onOptionSelect,
     handleClear,
     handleClickOutside,
+    selectVal,
     state,
-    selectConatinerStyles,
-    selectContainerClass,
     arrowIcon
   };
 }

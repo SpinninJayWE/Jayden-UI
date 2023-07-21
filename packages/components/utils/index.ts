@@ -18,9 +18,7 @@ const isEmptyObj = (obj: object): boolean => {
   return true;
 };
 
-function isPrimitive(
-  value: string | number | boolean | symbol | null | undefined
-) {
+function isPrimitive(value: any) {
   return (
     typeof value === 'string' ||
     typeof value === 'number' ||
@@ -31,5 +29,13 @@ function isPrimitive(
   );
 }
 
-export { withInstall, isEmptyObj, isPrimitive };
+function isObject(obj: any) {
+  return obj !== null && typeof obj === 'object' && !Array.isArray(obj);
+}
+
+function isArray(value: any) {
+  return Array.isArray(value);
+}
+
+export { withInstall, isEmptyObj, isPrimitive, isObject, isArray };
 export { default as initDefaultProps } from './props';

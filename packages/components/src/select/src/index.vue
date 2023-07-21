@@ -1,68 +1,87 @@
 <template>
-  <div
-    v-os.j-select-dropdown="handleClickOutside"
-    class="j-select"
-    :class="[...selectContainerClass]"
-  >
-    <div v-wr class="j-select-wrapper" :style="{ ...selectConatinerStyles }">
-      <div v-if="$slots.prefix" class="prefix-content">
-        <slot name="prefix"></slot>
-      </div>
-      <div class="main-content">
-        {{ iptValue }}
-      </div>
-      <div class="suffix-content">
-        <div class="arrow">
-          <slot name="suffix">
-            <Icon :icon="arrowIcon"></Icon>
-          </slot>
+  <Popover :width="popoverWidth" v-model="state.visbaleDropOptions">
+    <template #reference>
+      <div
+        ref="selectRef"
+        v-os.j-select-dropdown="handleClickOutside"
+        class="j-select"
+        :class="[...selectContainerClass]"
+        v-bind="$attrs"
+      >
+        <div
+          v-wr
+          class="j-select-wrapper"
+          :style="{ ...selectConatinerStyles }"
+        >
+          <div v-if="$slots.prefix" class="prefix-content">
+            <slot name="prefix"></slot>
+          </div>
+          <div class="main-content">
+            {{
+              isArray(selectVal) ? (selectVal as any[]).toString() : selectVal
+            }}
+          </div>
+          <div class="suffix-content">
+            <div class="arrow">
+              <slot name="suffix">
+                <Icon :icon="arrowIcon"></Icon>
+              </slot>
+            </div>
+            <div class="clear">
+              <Button
+                @click.stop="handleClear"
+                :size="'so-small'"
+                icon-btn
+                :icon="'icon-close'"
+              ></Button>
+            </div>
+          </div>
         </div>
-        <div class="clear">
-          <Button
-            @click="handleClear"
-            :size="'so-small'"
-            icon-btn
-            :icon="'icon-close'"
-          ></Button>
-        </div>
       </div>
-    </div>
-    <!-- <Transition name="slider-y">
-      <div v-show="state.expandSelectOptions" class="j-select-dropdown-wrapper">
-        <Options />
-      </div>
-    </Transition> -->
-  </div>
+    </template>
+    <Options
+      @select="onOptionSelect"
+      v-bind="{ options, multiple, labelKey, valueKey, select }"
+    />
+  </Popover>
 </template>
 
 <script lang="ts" setup>
 import '../style/index.scss';
-import { computed } from 'vue';
 import { ComponentSize } from '../../../constant/index';
 import useInput from '../hooks/use-select';
 import { RuleFuncs } from '@/types';
-import { Icon, Button } from '../../index';
+import { Icon, Button, Popover } from '../../index';
 import { clickOutside, msdWr } from 'jayden-ui-directives';
 import Options from './options.vue';
+import useSelectDom from '../hooks/use-select-dom';
+import { isArray } from '../../../utils';
 defineOptions({
-  name: 'j-select'
+  name: 'j-select',
+  inheritAttrs: false
 });
 
-type StringOrNumber = string | number;
+type Basicdata = string | number | boolean | null | undefined;
+
+type OptionsItem = {
+  label: Basicdata;
+  value: Basicdata;
+};
 export type SelectProps = {
-  select?: StringOrNumber | StringOrNumber[] | undefined;
-  label?: StringOrNumber;
+  select?: Basicdata | Basicdata[];
+  labelKey?: string;
   valueKey?: string;
   size?: ComponentSize;
   multiple?: boolean;
   rules?: RuleFuncs;
   block?: boolean;
+  options?: OptionsItem[];
 };
 
 const vOs = clickOutside;
 const vWr = msdWr;
 
-const emit = defineEmits(['update:select']);
+const emit = defineEmits(['update:select', 'onChange']);
 const props = withDefaults(defineProps<SelectProps>(), {
   select: undefined,
   label: '',
@@ -70,27 +89,19 @@ const props = withDefaults(defineProps<SelectProps>(), {
   size: 'medium',
   multiple: false,
   rules: null,
-  block: false
+  block: false,
+  options: []
 });
-
-const iptValue = computed({
-  get() {
-    return props.select;
-  },
-  set(value) {
-    emit('update:select', value);
-  }
-});
-
-function handleClear() {
-  iptValue.value = undefined;
-}
 
 const {
+  onOptionSelect,
+  handleClear,
   handleClickOutside,
   state,
-  selectConatinerStyles,
-  selectContainerClass,
-  arrowIcon
-} = useInput(props);
+  arrowIcon,
+  selectVal
+} = useInput(props, emit);
+
+const { selectRef, popoverWidth, selectConatinerStyles, selectContainerClass } =
+  useSelectDom(props, emit);
 </script>

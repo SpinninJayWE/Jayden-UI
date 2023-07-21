@@ -95,15 +95,22 @@ function setPopoverPostion(
   };
 }
 
-export default function usePopover(props: PopoverProps) {
+export default function usePopover(props: PopoverProps, emit: any) {
   const referenceRef = ref<HTMLElement>();
   const popoverRef = ref<HTMLElement>();
 
   useResizeObserver(document.body, handleResize);
 
-  const state = reactive({
-    showPopover: false
-  });
+  const popoverVisable = props.modelValue
+    ? computed({
+        get() {
+          return props.modelValue;
+        },
+        set(value) {
+          emit('update:modelValue', value);
+        }
+      })
+    : ref(false);
 
   onMounted(() => {
     // initPopover();
@@ -141,11 +148,12 @@ export default function usePopover(props: PopoverProps) {
   }
 
   function togglePopover() {
-    state.showPopover ? hidePopover() : showPopover();
+    popoverVisable.value ? hidePopover() : showPopover();
   }
 
   async function showPopover() {
-    state.showPopover = true;
+    popoverVisable.value = true;
+
     await nextTick();
 
     const referenceRefVal = referenceRef.value as HTMLElement;
@@ -158,11 +166,11 @@ export default function usePopover(props: PopoverProps) {
     );
   }
   function hidePopover() {
-    state.showPopover = false;
+    popoverVisable.value = false;
   }
 
   function handleResize() {
-    if (state.showPopover) {
+    if (popoverVisable.value) {
       showPopover();
     }
   }
@@ -180,7 +188,7 @@ export default function usePopover(props: PopoverProps) {
 
   function handleTsEnter(el: Element) {}
   return {
-    state,
+    popoverVisable,
     referenceRef,
     popoverRef,
     handleTsBeforeEnter,
