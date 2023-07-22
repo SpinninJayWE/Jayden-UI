@@ -43,7 +43,7 @@
           >{{ showPopover }} &nbsp;Click Show Popover from Bidirectional
         </j-button>
       </template>
-      <template #default> Popover content </template>
+      <template #default> 1 </template>
     </j-popover>
   </div>
 </template>

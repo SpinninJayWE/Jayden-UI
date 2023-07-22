@@ -7,7 +7,8 @@ export default function usePopoverDom(props: PopoverProps) {
   const popoverContentStyles = computed(() => {
     const res: StyleValue = {};
     if (props.width) {
-      res.width = props.width + 'px';
+      res.width =
+        typeof props.width === 'number' ? props.width + 'px' : props.width;
     }
     const placement = props.placement;
     const marginOffset = popoverDefaultOffset + 'px';

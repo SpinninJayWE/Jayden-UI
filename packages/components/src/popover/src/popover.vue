@@ -39,7 +39,7 @@ const vCos = clickOutside;
 export type PopoverProps = {
   modelValue?: boolean | undefined;
   content?: string;
-  width?: number;
+  width?: number | string;
   trigger?: 'click' | 'hover' | 'contentmenu';
   placement?: 'top' | 'right' | 'bottom' | 'left';
   offset?: [number, number];
@@ -52,7 +52,7 @@ const emit = defineEmits(['update:modelValue', 'onClickOutside']);
 const props = withDefaults(defineProps<PopoverProps>(), {
   modelValue: undefined,
   content: '',
-  width: 120,
+  width: 'auto',
   trigger: 'click',
   placement: 'bottom',
   offset: [0, 0],
