@@ -15,7 +15,7 @@
         class="j-popover-content"
         :style="popoverContentStyles"
       >
-        <div class="j-popover-inner">
+        <div class="j-popover-inner" :style="popoverInnerStyles">
           <slot></slot>
         </div>
       </div>
@@ -29,7 +29,7 @@ import usePopover from '../hooks/use-popover';
 import usePopoverDom from '../hooks/use-popover-dom';
 import { clickOutside } from 'jayden-ui-directives';
 import { reactive } from '@vue/reactivity';
-import { computed } from 'vue';
+import { StyleValue, computed } from 'vue';
 defineOptions({
   name: 'j-popover'
 });
@@ -44,6 +44,7 @@ export type PopoverProps = {
   placement?: 'top' | 'right' | 'bottom' | 'left';
   offset?: [number, number];
   clkOutSideClosePop?: boolean;
+  popoverInnerStyles?: StyleValue;
 };
 
 const emit = defineEmits(['update:modelValue', 'onClickOutside']);

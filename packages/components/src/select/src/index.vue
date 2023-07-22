@@ -1,5 +1,9 @@
 <template>
-  <Popover :width="popoverWidth" v-model="state.visbaleDropOptions">
+  <Popover
+    :width="popoverWidth"
+    v-model="state.visbaleDropOptions"
+    :popover-inner-styles="{ padding: 0 }"
+  >
     <template #reference>
       <div
         ref="selectRef"

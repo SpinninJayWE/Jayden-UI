@@ -14,7 +14,8 @@
   top: 0;
   z-index: $popover-zdx;
   .j-popover-inner {
-    padding: 0px;
+    padding: 12px;
+    box-sizing: border-box;
     background-color: $bgc-color;
     border-radius: 4px;
     box-shadow: $popover-shadow;

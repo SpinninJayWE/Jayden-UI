@@ -4,7 +4,7 @@
     <!-- <Modal /> -->
     <!-- <Input /> -->
     <!-- <Icon /> -->
-    <!-- <Popover /> -->
+    <Popover />
     <div class="content-container">
       <h2>Select 下拉框</h2>
       <h3>默认 / 单选</h3>
