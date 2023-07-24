@@ -20,5 +20,7 @@
     background-color: $bgc-color;
     border-radius: 4px;
     box-shadow: $popover-shadow;
+    overflow: hidden;
+    word-wrap: break-word;
   }
 }

@@ -5,3 +5,4 @@ export * from './table';
 export * from './input';
 export * from './select';
 export * from './popover';
+export * from './message';

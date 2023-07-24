@@ -4,19 +4,16 @@
     <!-- <Modal /> -->
     <!-- <Input /> -->
     <!-- <Icon /> -->
-    <Popover />
+    <!-- <Popover /> -->
+    <!-- <Select /> -->
     <div class="content-container">
-      <h2>Select 下拉框</h2>
-      <h3>默认 / 单选</h3>
-      <j-select :options="options" v-model:select="select"> </j-select>
-      <h3>多选</h3>
-      <j-select
-        multiple
-        style="width: 500px"
-        :options="options"
-        v-model:select="select2"
-      >
-      </j-select>
+      <JMessage message="i'm message box" />
+      <JMessage closed type="warning" message="i'm message box" />
+      <JMessage type="success" message="i'm message box" />
+      <JMessage closed type="error" message="i'm message box" />
+      <br />
+      <j-button @click="showMessage">click show message</j-button>
+      <j-button @click="closeAllMessage">close all message</j-button>
     </div>
   </div>
 </template>
@@ -26,25 +23,20 @@ import Button from './exp/button.vue';
 import Input from './exp/input.vue';
 import Icon from './exp/icon.vue';
 import Popover from './exp/popover.vue';
-import { ref } from 'vue';
+import Select from './exp/select.vue';
+import { JMessage, Message } from '@jayden-ui/components';
 
-function gOptions() {
-  const options = [];
-
-  for (let i = 0; i < 10; i++) {
-    const option = {
-      label: `选项${i + 1}`,
-      value: Math.floor(Math.random() * 100),
-      disabled: i % 2 === 0
-    };
-    options.push(option);
-  }
-
-  return options;
+function showMessage() {
+  const res = Message({
+    type: 'success',
+    message: '哈喽 你们好',
+    closed: true
+  });
 }
-const select = ref('');
-const select2 = ref([]);
-const options = ref(gOptions());
+
+function closeAllMessage() {
+  Message.closeAll();
+}
 </script>
 <style lang="scss" scoped>
 .app {
@@ -59,6 +51,9 @@ const options = ref(gOptions());
   :deep() {
     .reference-content {
       margin-bottom: 20px;
+    }
+    .j-message {
+      margin-top: 20px;
     }
   }
 }

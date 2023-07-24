@@ -43,7 +43,19 @@
           >{{ showPopover }} &nbsp;Click Show Popover from Bidirectional
         </j-button>
       </template>
-      <template #default> 1 </template>
+      <template #default> Popover Content </template>
+    </j-popover>
+    <h3>指定样式和宽度</h3>
+    <j-popover
+      :popover-inner-styles="{ height: 60 + 'px', backgroundColor: 'red' }"
+      :width="160"
+      placement="bottom"
+      trigger="click"
+    >
+      <template #reference>
+        <j-button>Click Show Popover from Custom Styles </j-button>
+      </template>
+      <template #default> Popover Content </template>
     </j-popover>
   </div>
 </template>

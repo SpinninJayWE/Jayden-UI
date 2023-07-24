@@ -88,3 +88,16 @@
   opacity: 0;
   transform: translateX(150px);
 }
+
+.j-message-enter-active,
+.j-message-leave-active {
+  transition:
+    opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.j-message-enter-from,
+.j-message-leave-to {
+  opacity: 0;
+  transform: translateY(-100%);
+}
