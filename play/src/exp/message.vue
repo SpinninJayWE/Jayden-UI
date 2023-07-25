@@ -22,7 +22,7 @@
       >click show success message</j-button
     >
     <h3>关闭所有 message</h3>
-    <j-button type="success" @click="showMessage('success')"
+    <j-button type="success" @click="showMultipleMessage('success')"
       >Open multiple message</j-button
     >
     &nbsp;
@@ -42,6 +42,16 @@ function showMessage(type = 'info', closed = false, showIcon = false) {
   });
 }
 
+async function showMultipleMessage(type = 'success') {
+  for (let index = 0; index < 10; index++) {
+    await new Promise((resolve) => setTimeout(resolve, index === 0 ? 0 : 100));
+    JMessage({
+      type,
+      message: ` is from ${type} message ${index + 1}`,
+      showIcon: true
+    });
+  }
+}
 function closeAllMessage() {
   JMessage.closeAll();
 }

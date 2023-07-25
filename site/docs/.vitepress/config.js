@@ -4,7 +4,7 @@ export default {
   themeConfig: {
     siteTitle: 'jayden-ui',
     nav: [
-      { text: '指南', link: '/guild/index' },
+      { text: '指南', link: '/guild/install' },
       { text: '组件', link: '/components/' }
     ],
     socialLinks: [
@@ -20,20 +20,11 @@ export default {
           items: [
             {
               text: '安装',
-              link: '/guild/index'
+              link: '/guild/install'
             },
             {
-              text: '快速教程',
+              text: '快速开始',
               link: '/guild/quickstart'
-            }
-          ]
-        },
-        {
-          text: '进阶',
-          items: [
-            {
-              text: 'xx',
-              link: '/xx'
             }
           ]
         }
