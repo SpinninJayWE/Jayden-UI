@@ -91,4 +91,12 @@ export type IconNames =
   | 'icon-lower-left-arrow'
   | 'icon-lock'
   | 'icon-more'
-  | 'icon-disabled';
+  | 'icon-disabled'
+  | 'icon-chenggong1'
+  | 'icon-chenggong'
+  | 'icon-jinggao1'
+  | 'icon-xinxi-yuankuang'
+  | 'icon-cuowuguanbiquxiao-xianxingyuankuang'
+  | 'icon-cuowuguanbiquxiao-yuankuang'
+  | 'icon-xinxi'
+  | 'icon-jinggao';

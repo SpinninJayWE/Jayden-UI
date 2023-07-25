@@ -1,20 +1,13 @@
 <template>
   <div class="app">
-    <!-- <Button /> -->
-    <!-- <Modal /> -->
-    <!-- <Input /> -->
-    <!-- <Icon /> -->
-    <!-- <Popover /> -->
-    <!-- <Select /> -->
-    <div class="content-container">
-      <JMessage message="i'm message box" />
-      <JMessage closed type="warning" message="i'm message box" />
-      <JMessage type="success" message="i'm message box" />
-      <JMessage closed type="error" message="i'm message box" />
-      <br />
-      <j-button @click="showMessage">click show message</j-button>
-      <j-button @click="closeAllMessage">close all message</j-button>
-    </div>
+    <Button />
+    <Modal />
+    <Input />
+    <Icon />
+    <Popover />
+    <Select />
+    <Alert />
+    <Message />
   </div>
 </template>
 <script setup lang="ts">
@@ -24,19 +17,8 @@ import Input from './exp/input.vue';
 import Icon from './exp/icon.vue';
 import Popover from './exp/popover.vue';
 import Select from './exp/select.vue';
-import { JMessage, Message } from '@jayden-ui/components';
-
-function showMessage() {
-  const res = Message({
-    type: 'success',
-    message: '哈喽 你们好',
-    closed: true
-  });
-}
-
-function closeAllMessage() {
-  Message.closeAll();
-}
+import Alert from './exp/alert.vue';
+import Message from './exp/message.vue';
 </script>
 <style lang="scss" scoped>
 .app {

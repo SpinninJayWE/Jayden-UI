@@ -27,6 +27,7 @@
     "url": "git@github.com:SpinninJayWE/Jayden-UI.git"
   },
   "dependencies": {
+    "@vueuse/core": "^10.2.1",
     "jayden-ui-directives": "^1.0.6",
     "jayden-ui-utils": "workspace:^"
   }

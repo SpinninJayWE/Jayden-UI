@@ -31,11 +31,7 @@ const closeMessage = (instance: MessageContext) => {
   const idx = instances.indexOf(instance);
 
   if (idx === -1) return;
-
   instances.splice(idx, 1);
-
-  instance.handler.close();
-
   setTimeout(() => {
     instance.app.unmount();
   }, 300);
@@ -57,8 +53,6 @@ function createMessage(options: MessageProps): MessageContext {
   const Message = createApp(MessageComp, props);
   const vm = mountMessage(Message);
 
-  vm.open();
-
   const instance: MessageContext = {
     id,
     app: Message,
@@ -74,12 +68,11 @@ function createMessage(options: MessageProps): MessageContext {
   return instance;
 }
 
-const message = (options: MessageProps): MessageContext => {
+const message = (options: MessageProps): MessageHandler => {
   options = normalizeOptions(options);
   const instance: MessageContext = createMessage(options);
   instances.push(instance);
-
-  return instance;
+  return instance.handler;
 };
 
 messageTtpes.forEach((type) => {
@@ -90,6 +83,8 @@ messageTtpes.forEach((type) => {
 });
 
 message.closeAll = (type?: ComponentStatus) => {
+  if (!instances.length) return;
+
   for (const c in instances) {
     if (!type || instances[c].props.type === type) {
       instances[c].handler.close();
