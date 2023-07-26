@@ -54,7 +54,8 @@
 
 ## 按钮图标 IconButton
 
-<j-button :icon="'icon-delete'" :size="'so-small'" icon-btn> </j-button>
+属性 **_iconBtn_** 设置为 **_true_** 将开启图标按钮模式
+<j-button :icon="'icon-delete'" :size="'so-small'" icon-btn > </j-button>
 <j-button :icon="'icon-add'" :size="'small'" icon-btn type="primary">
 </j-button>
 <j-button :icon="'icon-ascending'" icon-btn type="warn"> </j-button>
@@ -70,7 +71,31 @@
 </j-button>
 ```
 
-<style lang='scss'>
+## 通过icon插槽
+
+通过 **_slot icon_** 可以自定义插入图标
+
+<j-button :type="'success'">
+ATM-FILL
+<template #icon> <j-icon :icon="'icon-atm-fill'" /> </template>
+</j-button>
+<j-button :size="'large'" :type="'warn'">
+ATM-FILL
+<template #icon> <j-icon :icon="'icon-close'" /> </template>
+</j-button>
+
+```html
+<j-button :type="'success'">
+  ATM-FILL
+  <template #icon> <j-icon :icon="'icon-atm-fill'" /> </template>
+</j-button>
+<j-button :size="'large'" :type="'warn'">
+  ATM-FILL
+  <template #icon> <j-icon :icon="'icon-close'" /> </template>
+</j-button>
+```
+
+<style lang='scss' scoped>
     .j-button {
         margin-bottom: 12px;
         margin-right: 12px;

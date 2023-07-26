@@ -1,5 +1,5 @@
 import { computed, reactive } from 'vue';
-import { SelectProps } from '../src/index.vue';
+import { OptionsItem, SelectProps } from '../src/index.vue';
 import { isArray } from '../../../utils';
 import { IconName } from '../../icon/types';
 
@@ -16,6 +16,27 @@ export default function useInput(props: SelectProps, emit: any) {
     set(value) {
       emit('update:select', value);
     }
+  });
+
+  const selectLables = computed(() => {
+    const select = selectVal.value;
+    let res: any = null;
+    if (!props.multiple) {
+      const optItem = props.options?.find((oItem) => oItem.value === select);
+      if (optItem) {
+        res = optItem.label;
+      }
+    } else if (Array.isArray(select)) {
+      res = [];
+      select.forEach((item) => {
+        const optItem = props.options?.find((oItem) => oItem.value === item);
+        if (optItem) {
+          res.push(optItem.label);
+        }
+      });
+    }
+
+    return res;
   });
 
   const state = reactive({
@@ -51,15 +72,16 @@ export default function useInput(props: SelectProps, emit: any) {
     }
   }
 
-  function onOptionSelect(val: any) {
-    setSelect(val);
-    emit('onChange', selectVal.value);
+  function onOptionSelect(val: OptionsItem) {
+    setSelect(val.value);
+    emit('onChange', val);
   }
 
   return {
     onOptionSelect,
     handleClear,
     selectVal,
+    selectLables,
     state,
     arrowIcon
   };

@@ -119,10 +119,11 @@ function handleOptionSelect(e: Event) {
   const optItemTarget = e.target as HTMLElement;
   if (optItemTarget.classList.contains('j-select-options-item')) {
     const optItemKey = optItemTarget.dataset.itemkey;
+
     const val = rocessingValue(optItemKey);
     const curOptItemObj = props.options.find((item) => item.value === val);
     if (curOptItemObj && curOptItemObj.disabled) return;
-    emit('select', val);
+    emit('select', { ...curOptItemObj, value: val });
   }
 }
 </script>

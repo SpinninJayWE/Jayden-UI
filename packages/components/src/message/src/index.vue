@@ -114,7 +114,7 @@ const messageStyles = computed(() => {
   const res: StyleValue = {};
   if (props.showType === 'alert') {
     res.display = 'flex';
-    res.zIndex = 50;
+    res.zIndex = 0;
   } else if (props.showType === 'pop-up') {
     let idx = 0;
     if (props.id) {

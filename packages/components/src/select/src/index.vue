@@ -21,7 +21,9 @@
           </div>
           <div class="main-content">
             {{
-              isArray(selectVal) ? (selectVal as any[]).toString() : selectVal
+              isArray(selectLables)
+                ? (selectLables as any[]).toString()
+                : selectLables
             }}
           </div>
           <div class="suffix-content">
@@ -66,7 +68,7 @@ defineOptions({
 
 type Basicdata = string | number | boolean | null | undefined;
 
-type OptionsItem = {
+export type OptionsItem = {
   label: Basicdata;
   value: Basicdata;
   disabled?: boolean;
@@ -96,10 +98,8 @@ const props = withDefaults(defineProps<SelectProps>(), {
   options: []
 });
 
-const { onOptionSelect, handleClear, state, arrowIcon, selectVal } = useInput(
-  props,
-  emit
-);
+const { onOptionSelect, handleClear, state, arrowIcon, selectLables } =
+  useInput(props, emit);
 
 const { selectRef, popoverWidth, selectConatinerStyles, selectContainerClass } =
   useSelectDom(props, emit);
