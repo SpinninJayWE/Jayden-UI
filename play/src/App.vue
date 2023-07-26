@@ -1,13 +1,16 @@
 <template>
   <div class="app">
-    <Button />
+    <!-- <Button />
     <Modal />
     <Input />
     <Icon />
     <Popover />
     <Select />
     <Alert />
-    <Message />
+    <Message /> -->
+    <div class="content-container">
+      <j-carousel :height="300"></j-carousel>
+    </div>
   </div>
 </template>
 <script setup lang="ts">
