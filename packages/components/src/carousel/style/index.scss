@@ -6,17 +6,19 @@
   width: 100%;
   height: 100%;
   overflow: hidden;
-  .j-carousel-inner-content {
-    width: 100%;
+  border: 1px solid #999;
+  border-radius: 12px;
+  background-color: $disabled-color;
+  .j-carousel-inner-wrapper {
+    transform: translate3d(0, 0, 0);
+    transition-property: transform;
+    transition-duration: 400ms;
+    transition-timing-function: cubic-bezier(0.77, 0, 0.175, 1);
     .j-carousel-item {
       float: left;
       height: 100%;
       background-color: rgb(57, 167, 167);
-      border: 1px solid red;
-      box-sizing: border-box;
-      &.red {
-        background-color: rgb(161, 33, 33);
-      }
+      pointer-events: none;
     }
   }
 }

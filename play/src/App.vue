@@ -9,7 +9,23 @@
     <Alert />
     <Message /> -->
     <div class="content-container">
-      <j-carousel :height="300"></j-carousel>
+      <j-carousel :height="500">
+        <j-carousel-item name="jay" label="jj">
+          <img
+            src="https://cdn.pixabay.com/photo/2016/02/13/13/11/oldtimer-1197800_640.jpg"
+          />
+        </j-carousel-item>
+        <j-carousel-item name="bb" label="bbb">
+          <img
+            src="https://cdn.pixabay.com/photo/2014/09/03/20/15/shoes-434918_1280.jpg"
+          />
+        </j-carousel-item>
+        <j-carousel-item name="cc" label="ccc">
+          <img
+            src="https://cdn.pixabay.com/photo/2019/07/07/14/03/fiat-500-4322521_640.jpg"
+          />
+        </j-carousel-item>
+      </j-carousel>
     </div>
   </div>
 </template>
@@ -40,6 +56,12 @@ import Message from './exp/message.vue';
     .j-message {
       margin-top: 20px;
     }
+  }
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    user-select: none;
   }
 }
 </style>

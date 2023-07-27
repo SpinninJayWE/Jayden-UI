@@ -1,24 +1,18 @@
 <template>
-  <div ref="carouselRef" class="j-carousel" :style="carouselStyles">
+  <div
+    @mousedown="handleCarouselMouseDown"
+    ref="carouselRef"
+    class="j-carousel"
+    :style="carouselStyles"
+  >
     <div
+      ref="carouselInnerWrapperRef"
       :style="{
-        width: clientViewInfo.width * 2 + 'px',
-        height: clientViewInfo.height + 'px'
+        ...innerWrapperStyles
       }"
-      class="j-carousel-inner-content"
+      class="j-carousel-inner-wrapper"
     >
-      <div
-        :style="{
-          width: clientViewInfo.width + 'px'
-        }"
-        class="j-carousel-item red"
-      ></div>
-      <div
-        :style="{
-          width: clientViewInfo.width + 'px'
-        }"
-        class="j-carousel-item"
-      ></div>
+      <slot></slot>
     </div>
   </div>
 </template>
@@ -26,7 +20,6 @@
 <script setup lang="ts">
 import useCarouselDom from '../hooks/use-carousel-dom';
 import '../style/index.scss';
-
 type Direction = 'horizontal' | 'vertical';
 export type CarouselProps = {
   height?: number;
@@ -48,10 +41,13 @@ const props = withDefaults(defineProps<CarouselProps>(), {
   interval: 3000
 });
 
-const { carouselRef, clientViewInfo, carouselStyles } = useCarouselDom(
-  props,
-  emit
-);
+const {
+  carouselRef,
+  carouselInnerWrapperRef,
+  carouselStyles,
+  innerWrapperStyles,
+  handleCarouselMouseDown
+} = useCarouselDom(props, emit);
 
 defineOptions({
   name: 'j-carousel'

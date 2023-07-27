@@ -10,6 +10,7 @@ declare module '@vue/runtime-core' {
     JPopover: typeof components.Popover;
     JMessage: typeof components.Alert;
     JCarousel: typeof components.Carousel;
+    JCarouselItem: typeof components.CarouselItem;
   }
 }
 export {};
