@@ -8,19 +8,20 @@
     <Select />
     <Alert />
     <Message /> -->
+    <br />
     <div class="content-container">
       <j-carousel :height="500">
-        <j-carousel-item name="jay" label="jj">
+        <j-carousel-item name="A" label="A">
           <img
             src="https://cdn.pixabay.com/photo/2016/02/13/13/11/oldtimer-1197800_640.jpg"
           />
         </j-carousel-item>
-        <j-carousel-item name="bb" label="bbb">
+        <j-carousel-item name="B" label="B">
           <img
             src="https://cdn.pixabay.com/photo/2014/09/03/20/15/shoes-434918_1280.jpg"
           />
         </j-carousel-item>
-        <j-carousel-item name="cc" label="ccc">
+        <j-carousel-item name="C" label="C">
           <img
             src="https://cdn.pixabay.com/photo/2019/07/07/14/03/fiat-500-4322521_640.jpg"
           />

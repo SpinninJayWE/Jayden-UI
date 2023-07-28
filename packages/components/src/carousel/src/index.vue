@@ -18,6 +18,7 @@
 </template>
 
 <script setup lang="ts">
+import useCarousel from '../hooks/use-carousel';
 import useCarouselDom from '../hooks/use-carousel-dom';
 import '../style/index.scss';
 type Direction = 'horizontal' | 'vertical';
@@ -46,8 +47,15 @@ const {
   carouselInnerWrapperRef,
   carouselStyles,
   innerWrapperStyles,
-  handleCarouselMouseDown
+  clientViewSize,
+  carouselItemCount
 } = useCarouselDom(props, emit);
+
+const { handleCarouselMouseDown } = useCarousel(
+  carouselInnerWrapperRef,
+  clientViewSize,
+  carouselItemCount
+);
 
 defineOptions({
   name: 'j-carousel'
