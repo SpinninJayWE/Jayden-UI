@@ -26,7 +26,8 @@ export default defineConfig({
         /\.scss/,
         'jayden-ui-directives',
         'jayden-ui-utils',
-        '@vueuse/core'
+        '@vueuse/core',
+        '@vue'
       ],
       input: ['index.ts'],
       output: [

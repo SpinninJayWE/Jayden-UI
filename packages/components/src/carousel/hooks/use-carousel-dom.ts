@@ -1,19 +1,22 @@
 import { useResizeObserver } from '@vueuse/core';
 import { CarouselProps } from '../src/index.vue';
 import {
-  Component,
   computed,
-  getCurrentInstance,
-  isVNode,
   onMounted,
   provide,
   reactive,
+  Ref,
   ref,
   StyleValue
 } from 'vue';
 import { ClientViewSize } from '../types';
+import { CarouselItemProps } from '../src/item.vue';
 
-export default function useCarouselDom(props: CarouselProps, emit: any) {
+export default function useCarouselDom(
+  props: CarouselProps,
+  emit: any,
+  carouselItems: Ref<CarouselItemProps[]>
+) {
   const carouselRef = ref<HTMLElement | null>();
   const carouselInnerWrapperRef = ref<HTMLElement | null>();
   const carouselStyles = computed(() => {
@@ -36,7 +39,7 @@ export default function useCarouselDom(props: CarouselProps, emit: any) {
       clientViewSize.width = carouselRefVal.offsetWidth;
       clientViewSize.height = carouselRefVal.offsetHeight;
       clientViewSize.fullWidth =
-        carouselRefVal.offsetWidth * carouselItemCount.value;
+        carouselRefVal.offsetWidth * carouselItems.value.length;
     }
   }
 
@@ -46,28 +49,10 @@ export default function useCarouselDom(props: CarouselProps, emit: any) {
     setClientViewSize();
   });
 
-  const carouselItemCount = computed(() => {
-    let res = 0;
-    const currentInsDefSlots = getCurrentInstance()?.slots.default;
-    if (currentInsDefSlots && currentInsDefSlots().length) {
-      const defSlots = currentInsDefSlots();
-      defSlots.forEach((item) => {
-        const type = item.type;
-        if (typeof type !== 'string' && !isVNode(type)) {
-          if ((type as Component).name === 'j-carousel-item') {
-            res++;
-          }
-        }
-      });
-      res = currentInsDefSlots().length;
-    }
-    return res;
-  });
-
   const innerWrapperStyles = computed(() => {
     const res: StyleValue = {};
     const clientViewSizeVal = clientViewSize;
-    (res.width = clientViewSizeVal.width * carouselItemCount.value + 'px'),
+    (res.width = clientViewSizeVal.width * carouselItems.value.length + 'px'),
       (res.height = clientViewSizeVal.height + 'px');
 
     return res;
@@ -87,6 +72,6 @@ export default function useCarouselDom(props: CarouselProps, emit: any) {
     clientViewSize,
     carouselRef,
     carouselInnerWrapperRef,
-    carouselItemCount
+    carouselItems
   };
 }

@@ -16,6 +16,7 @@
     <div v-if="!iconBtn" @mousedown.stop.prevent class="j-button-text">
       <slot></slot>
     </div>
+    <slot name="icon-right"> </slot>
   </div>
 </template>
 

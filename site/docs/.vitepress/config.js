@@ -64,6 +64,10 @@ export default {
             {
               text: 'Message',
               link: '/components/message/index.md'
+            },
+            {
+              text: 'Carousel',
+              link: '/components/carousel/index.md'
             }
           ]
         }

@@ -7,6 +7,9 @@ importers:
       jayden-ui-directives:
         specifier: workspace:^
         version: link:packages/directives
+      jayden-ui-utils:
+        specifier: workspace:^1.0.0
+        version: link:packages/utils
     devDependencies:
       '@types/gulp':
         specifier: ^4.0.13
@@ -129,12 +132,12 @@ importers:
 
   packages/jayden-ui:
     dependencies:
+      '@vueuse/core':
+        specifier: ^10.2.1
+        version: 10.2.1(vue@3.3.4)
       jayden-ui-directives:
-        specifier: ^1.0.5
+        specifier: ^1.0.6
         version: link:../directives
-      jayden-ui-utils:
-        specifier: workspace:^
-        version: link:../utils
 
   packages/theme-chalk: {}
 

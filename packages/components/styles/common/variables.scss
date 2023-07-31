@@ -4,14 +4,20 @@ $warn-color: rgb(251, 140, 0);
 $err-color: rgb(176, 0, 32);
 $success-color: rgb(76, 175, 80);
 $info-color: rgb(33, 150, 243);
-$primary-color: #2e86de;
+$primary-color: rgb(24, 103, 192);
 $disabled-color: #e7e4e4;
+
+$primary-color-opacity30: rgba(24, 103, 192, 0.3);
+$primary-color-opacity40: rgba(24, 103, 192, 0.4);
+$primary-color-opacity50: rgba(24, 103, 192, 0.5);
 
 $bgc-color: #fff;
 $text-color: #222f3e;
 $text-gary: #576574;
 $text-gary2: #8395a7;
 $text-color-light: #fefeff;
+
+$bgc-gary: #bfbfbf;
 
 $border-color: #dcdde1;
 
