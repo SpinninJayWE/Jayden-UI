@@ -1,7 +1,4 @@
 <template>
-  <!-- isDraging: {{ state.isDraging }} activeItemIdx:
-  {{ state.activeItemIndex }} activeItemName: {{ state.activeItemName }} items:
-  {{ carouselItems.length }} carouselProgress: {{ carouselProgress }} -->
   <div
     @mousedown="handleCarouselMouseDown"
     ref="carouselRef"

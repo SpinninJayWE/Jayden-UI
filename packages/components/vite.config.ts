@@ -4,17 +4,9 @@ import dts from 'vite-plugin-dts';
 // @ts-ignore
 import DefineOptions from 'unplugin-vue-define-options/vite';
 import vueJsx from '@vitejs/plugin-vue-jsx';
-
 import { resolve } from 'path';
 export default defineConfig({
-  resolve: {
-    alias: [
-      {
-        find: '@',
-        replacement: resolve(__dirname, '.')
-      }
-    ]
-  },
+  base: './',
   build: {
     outDir: '../jayden-ui/es',
     //压缩
@@ -85,5 +77,13 @@ export default defineConfig({
         }
       }
     }
-  ]
+  ],
+  resolve: {
+    alias: [
+      {
+        find: '@',
+        replacement: resolve(__dirname, './')
+      }
+    ]
+  }
 });

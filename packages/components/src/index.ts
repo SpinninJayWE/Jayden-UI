@@ -7,3 +7,4 @@ export * from './select';
 export * from './popover';
 export * from './message';
 export * from './carousel';
+export * from './slider';
