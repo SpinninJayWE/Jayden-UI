@@ -68,6 +68,10 @@ export default {
             {
               text: 'Carousel',
               link: '/components/carousel/index.md'
+            },
+            {
+              text: 'Slider',
+              link: '/components/slider/index.md'
             }
           ]
         }
