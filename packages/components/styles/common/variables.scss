@@ -1,7 +1,4 @@
 @use './cssvar.scss' as *;
-html {
-  --j-disabled-effect: grayscale(1) opacity(0.4);
-}
 
 $white-color: var(--white-color);
 $black-color: var(--black-color);

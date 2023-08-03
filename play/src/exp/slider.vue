@@ -12,6 +12,22 @@
         <j-icon :icon="'icon-add'"></j-icon>
       </template>
     </j-slider>
+    <h3>自定义颜色</h3>
+    <j-slider fillColor="#000">
+      <template #prepend> Fill Color </template>
+    </j-slider>
+    <br />
+    <j-slider trackColor="#333">
+      <template #prepend> Track Color </template>
+    </j-slider>
+    <br />
+    <j-slider thumbColor="#666">
+      <template #prepend> Thumb Color </template>
+    </j-slider>
+    <br />
+    <j-slider fillColor="#ff9800" trackColor="#FFD89E" thumbColor="#ff9800">
+      <template #prepend> ALL </template>
+    </j-slider>
     <h3>设置禁用</h3>
     通过disabled属性设置禁用
     <j-slider :modelValue="5" disabled></j-slider>
@@ -103,4 +119,22 @@ const g = ref(155);
 const b = ref(155);
 </script>
 
-<style scoped></style>
+<style lang="scss">
+.card {
+  padding-bottom: 20px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  width: 50%;
+  box-shadow: 0 6px 8px rgba($color: #000000, $alpha: 0.4);
+  .color-bgc {
+    height: 400px;
+  }
+  .content {
+    padding: 0 16px;
+    box-sizing: border-box;
+    .j-slider {
+      margin-top: 32px;
+    }
+  }
+}
+</style>

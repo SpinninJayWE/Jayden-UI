@@ -27,6 +27,46 @@
 </j-slider>
 ```
 
+## 自定义颜色
+
+通过**fillColor**（填充）、**trackColor**（轨道）、**thumbColor**（滑块）设置slider的颜色
+<br/>
+<j-slider :modelValue='25'  fillColor="#000">
+<template #prepend> Fill Color </template>
+</j-slider>
+<br/>
+<j-slider :modelValue='25'  trackColor="#333">
+<template #prepend> Track Color </template>
+</j-slider>
+<br/>
+<j-slider :modelValue='25' thumbColor="#666">
+<template #prepend> Thumb Color </template>
+</j-slider>
+<br/>
+<j-slider :modelValue='20' fillColor="#ff9800" trackColor="#FFD89E" thumbColor="#ff9800">
+<template #prepend> ALL </template>
+</j-slider>
+
+```html
+<j-slider :modelValue="25" fillColor="#000">
+  <template #prepend> Fill Color </template>
+</j-slider>
+<j-slider :modelValue="25" trackColor="#333">
+  <template #prepend> Track Color </template>
+</j-slider>
+<j-slider :modelValue="25" thumbColor="#666">
+  <template #prepend> Thumb Color </template>
+</j-slider>
+<j-slider
+  :modelValue="20"
+  fillColor="#ff9800"
+  trackColor="#FFD89E"
+  thumbColor="#ff9800"
+>
+  <template #prepend> ALL </template>
+</j-slider>
+```
+
 ## 设置禁用
 
 通过disabled属性设置禁用

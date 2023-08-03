@@ -1,16 +1,15 @@
 <template>
   <div class="app">
-    <Button />
-    <Modal />
-    <Input />
-    <Icon />
-    <Popover />
-    <Select />
-    <Alert />
-    <Message />
-    <Carousel />
+    <!-- <Button /> -->
+    <!-- <Modal /> -->
+    <!-- <Input /> -->
+    <!-- <Icon /> -->
+    <!-- <Popover /> -->
+    <!-- <Select /> -->
+    <!-- <Alert /> -->
+    <!-- <Message /> -->
+    <!-- <Carousel /> -->
     <Slider />
-    <br />
   </div>
 </template>
 <script setup lang="ts">

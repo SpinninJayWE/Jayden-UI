@@ -36,6 +36,9 @@ export type SliderProps = {
   min?: number;
   max?: number;
   step?: number;
+  fillColor?: string;
+  trackColor?: string;
+  thumbColor?: string;
 };
 
 const emit = defineEmits(['update:modelValue']);
@@ -45,7 +48,10 @@ const props = withDefaults(defineProps<SliderProps>(), {
   min: 0,
   max: 100,
   step: 0,
-  readonly: false
+  readonly: false,
+  fillColor: '',
+  trackColor: '',
+  thumbColor: ''
 });
 
 const { sliderCssVar, thumbRef, sliderWrapperRef, sliderTrackRef } = useSlider(
