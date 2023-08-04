@@ -17,6 +17,8 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue-jsx": "^3.0.1",
+    "autoprefixer": "^10.4.14",
+    "gulp-postcss": "^9.0.1",
     "vue-types": "^5.1.0"
   }
 }

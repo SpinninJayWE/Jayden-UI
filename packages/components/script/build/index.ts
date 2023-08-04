@@ -15,7 +15,11 @@ export const removeDist = () => {
 export const buildStyle = () => {
   return src(`${componentPath}/src/**/style/**.scss`)
     .pipe(sass())
-    .pipe(autoprefixer())
+    .pipe(
+      autoprefixer({
+        cascade: false
+      })
+    )
     .pipe(dest(`${pkgPath}/jayden-ui/lib/src`))
     .pipe(dest(`${pkgPath}/jayden-ui/es/src`));
 };
