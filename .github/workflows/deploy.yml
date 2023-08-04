@@ -13,4 +13,4 @@ jobs:
         with:
           clean: true # 清空部署目录
           branch: gh-page # 部署分支
-          folder: ../../site/docs/.vitepress/dist # 部署目录
+          folder: dist # 部署目录
