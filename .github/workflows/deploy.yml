@@ -12,11 +12,11 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-        
+
       - name: Deploy to Git Pages
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
-          branch: gh-page # 部署分支
-          folder: site/docs/.vitepress/dist # 部署目录
-          token: ${{ secrets.ACCESS_TOKEN }}
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          BRANCH: gh-pages # 部署分支
+          FOLDER: site/docs/.vitepress/dist # 部署目录
           clean: true # 清空部署目录
