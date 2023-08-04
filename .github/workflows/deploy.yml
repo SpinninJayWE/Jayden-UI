@@ -1,0 +1,29 @@
+name: Deploy to Git Pages
+
+on:
+  push:
+    branches:
+      - main # 部署主分支
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build project
+        run: npm run build
+
+      - name: Deploy to Git Pages
+        uses: JamesIves/github-pages-deploy-action@4.1.4
+        with:
+          branch: main # 部署分支
+          folder: site/docs/.vitepress/dist # 部署目录
+          token: ${{ secrets.deploy_Jayden-ui_github_pages }}
+          repository_name: jayden-component-library/jayden-ui.git # 目标仓库的用户名和仓库名
+          clean: true # 清空部署目录
