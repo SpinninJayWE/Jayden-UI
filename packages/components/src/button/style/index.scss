@@ -1,0 +1,126 @@
+@use '../../../styles/common/variables.scss' as *;
+@use '../../../styles/common/minxin.scss' as *;
+@use '../../../styles/base.scss' as *;
+.j-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  white-space: nowrap;
+  background: $bgc-color;
+  // border: 1px solid $border-color;
+  color: $text-color;
+  -webkit-appearance: none;
+  box-sizing: border-box;
+  outline: none;
+  margin: 0;
+  font-weight: 500;
+  font-size: $font-size-button;
+  border-radius: 4px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: $btn-shadow;
+  @include noselect();
+  transition: all 0.2s ease-out;
+
+  .j-button-text,
+  .j-button-icon {
+    z-index: 10;
+  }
+
+  &:not(.disabled)::before {
+    content: '';
+    background: $btn-hover-bgc-color;
+    opacity: 0;
+    transition: opacity 0.2s ease-out;
+    @include mask();
+  }
+
+  &:hover {
+    box-shadow: $btn-shadow-hover;
+    &::before {
+      opacity: 1;
+    }
+  }
+
+  &:active {
+    box-shadow: $btn-shadow-active !important;
+  }
+
+  &.primary,
+  &.warn,
+  &.info,
+  &.err,
+  &.success {
+    color: $white-color;
+    border: none;
+  }
+  &.primary {
+    background-color: $primary-color;
+  }
+  &.warn {
+    background-color: $warn-color;
+  }
+  &.info {
+    background-color: $info-color;
+  }
+  &.err {
+    background-color: $err-color;
+  }
+  &.success {
+    background-color: $success-color;
+  }
+
+  &.so-small {
+    padding: 0 8px;
+    min-width: 36px;
+    height: 20px;
+    font-size: $font-size-ssm;
+  }
+
+  &.small {
+    padding: 0 12px;
+    min-width: 50px;
+    height: 28px;
+    font-size: $font-size-ssm;
+  }
+
+  &.medium {
+    padding: 0 16px;
+    min-width: 64px;
+    height: 32px;
+    font-size: $font-size-sm;
+  }
+
+  &.large {
+    padding: 0 20px;
+    min-width: 78px;
+    height: 44px;
+    font-size: $font-size-md;
+  }
+
+  &.disabled {
+    background-color: $disabled-color;
+    color: $white-color;
+    pointer-events: none;
+  }
+
+  &.icon-btn {
+    min-width: auto;
+    border-radius: 50%;
+    padding: 0;
+    &.so-small {
+      width: 20px;
+    }
+    &.small {
+      width: 28px;
+    }
+    &.medium {
+      width: 32px;
+    }
+    &.large {
+      width: 44px;
+    }
+  }
+}

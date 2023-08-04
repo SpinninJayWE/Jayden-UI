@@ -1,0 +1,96 @@
+@use './cssvar.scss' as *;
+
+$white-color: var(--white-color);
+$black-color: var(--black-color);
+$warn-color: var(--warn-color);
+$err-color: var(--err-color);
+$success-color: var(--success-color);
+$info-color: var(--info-color);
+$primary-color: var(--primary-color);
+$disabled-color: var(--disabled-color);
+
+$primary-color-opacity30: var(--primary-color-opacity30);
+$primary-color-opacity40: var(--primary-color-opacity40);
+$primary-color-opacity50: var(--primary-color-opacity50);
+
+$bgc-color: var(--bgc-color);
+$text-color: var(--text-color);
+$text-gary: var(--text-gary);
+$text-gary2: var(--text-gary2);
+$text-color-light: var(--text-color-light);
+
+$bgc-gary: var(--bgc-gary);
+
+$border-color: var(--border-color);
+
+$mask-color: var(--mask-color);
+
+$scroll-track-color: #f1f2f6;
+$scroll-thumb-color: #dfe4ea;
+
+$j-disabled-effect: var(--j-disabled-effect);
+
+$ripple-color: var(--ripple-color);
+
+// btn
+$btn-hover-bgc-color: var(--btn-hover-bgc-color);
+
+// btn
+
+// ipt
+$ipt-bgc-color: var(--ipt-bgc-color);
+$ipt-hover-bgc-color: var(--ipt-hover-bgc-color);
+$ipt-focus-bgc-color: var(--ipt-focus-bgc-color);
+$ipt-disabled-bgc-color: var(--ipt-disabled-bgc-color);
+$ipt-tranfrom-transition: var(--ipt-tranfrom-transition);
+
+// ipt
+
+// select
+$slt-op-hover-bgc-color: var(--slt-op-hover-bgc-color);
+$slt-op-selected-bgc-color: var(--slt-op-selected-bgc-color);
+$slt-op-selected-hover-bgc-color: var(--slt-op-selected-hover-bgc-color);
+$slt-op-disabled-bgc-color: var(--slt-op-disabled-bgc-color);
+// select
+
+// 基础字体大小
+$font-base-size: var(--font-base-size);
+
+// 标题
+$font-size-heading: var(--font-size-heading);
+$font-size-subheading: var(--font-size-subheading);
+
+// 正文
+$font-size-body: var(--font-size-body);
+$font-size-small: var(--font-size-small);
+
+// 按钮
+$font-size-button: var(--font-size-button);
+
+// 响应式布局
+$font-size-lg: var(--font-size-lg);
+$font-size-md: var(--font-size-md);
+$font-size-sm: var(--font-size-sm);
+$font-size-ssm: var(--font-size-ssm);
+
+$icon-size-lg: var(--icon-size-lg);
+$icon-size-md: var(--icon-size-md);
+$icon-size-sm: var(--icon-size-sm);
+$icon-size-ssm: var(--icon-size-ssm);
+
+// 相对单位
+$font-size-base: var(--font-size-base);
+$font-size-lg: var(--font-size-lg);
+$font-size-md: var(--font-size-md);
+$font-size-sm: var(--font-size-sm);
+
+$modal-zdx: var(--modal-zdx);
+$popover-zdx: var(--popover-zdx);
+$referece-zdx: var(--referece-zdx);
+$message-zdx: var(--message-zdx);
+
+$btn-shadow: var(--btn-shadow);
+$btn-shadow-active: var(--btn-shadow-active);
+$btn-shadow-hover: var(--btn-shadow-hover);
+
+$popover-shadow: var(--popover-shadow);

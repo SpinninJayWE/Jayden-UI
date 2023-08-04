@@ -1,0 +1,28 @@
+@import '../themes/light.scss';
+:root {
+  /* Typography */
+  --font-base-size: 16px;
+  --font-size-heading: 24px;
+  --font-size-subheading: 20px;
+  --font-size-body: 16px;
+  --font-size-small: 14px;
+  --font-size-button: 16px;
+  --font-size-lg: 20px;
+  --font-size-md: 16px;
+  --font-size-sm: 14px;
+  --font-size-ssm: 12px;
+  --icon-size-lg: 24px;
+  --icon-size-md: 20px;
+  --icon-size-sm: 16px;
+  --icon-size-ssm: 14px;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.25rem;
+  --font-size-md: 1rem;
+  --font-size-sm: 0.875rem;
+
+  /* Z-index */
+  --modal-zdx: 1500;
+  --popover-zdx: 1100;
+  --reference-zdx: 1200;
+  --message-zdx: 1500;
+}

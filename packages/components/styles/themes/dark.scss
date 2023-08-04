@@ -1,0 +1,53 @@
+:root {
+  /* Colors */
+  --white-color: #1c1c1c;
+  --black-color: #ffffff;
+  --warn-color: #ffa500;
+  --err-color: #ff4d4f;
+  --success-color: #52c41a;
+  --info-color: #1890ff;
+  --primary-color: #0d47a1;
+  --disabled-color: #3a3a3a;
+  --bgc-color: #1c1c1c;
+  --text-color: #f0f0f0;
+  --text-gary: #c4c4c4;
+  --text-gary2: #8c8c8c;
+  --text-color-light: #1c1c1c;
+  --bgc-gary: #4f4f4f;
+  --border-color: #3a3a3a;
+  --mask-color: rgba(255, 255, 255, 0.5);
+  --scroll-track-color: #3a3a3a;
+  --scroll-thumb-color: #6b6b6b;
+  --j-disabled-effect: grayscale(1) opacity(0.6);
+  --ripple-color: rgba(255, 255, 255, 0.35);
+
+  /* Colors Opacity */
+  --primary-color-opacity30: rgba(24, 103, 192, 0.3);
+  --primary-color-opacity40: rgba(24, 103, 192, 0.4);
+  --primary-color-opacity50: rgba(24, 103, 192, 0.5);
+
+  /* Buttons */
+  --btn-hover-bgc-color: rgba(255, 255, 255, 0.13);
+
+  /* Inputs */
+  --ipt-bgc-color: #3a3a3a;
+  --ipt-hover-bgc-color: #4d4d4d;
+  --ipt-focus-bgc-color: #5c5c5c;
+  --ipt-disabled-bgc-color: #4f4f4f;
+  --ipt-tranfrom-transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Select */
+  --slt-op-hover-bgc-color: #4d4d4d;
+  --slt-op-selected-bgc-color: #5c5c5c;
+  --slt-op-selected-hover-bgc-color: #6b6b6b;
+  --slt-op-disabled-bgc-color: #4f4f4f;
+
+  /* Shadows */
+  --btn-shadow: 0px 2px 4px rgba(255, 255, 255, 0.25);
+  --btn-shadow-active: 0 2px 4px rgba(0, 0, 0, 0.3),
+    0 4px 8px rgba(0, 0, 0, 0.2), 0 10px 20px rgba(0, 0, 0, 0.1);
+  --btn-shadow-hover: 0 2px 4px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.1),
+    0 8px 16px rgba(0, 0, 0, 0.05);
+  --popover-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.08),
+    0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+}

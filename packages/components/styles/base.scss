@@ -1,0 +1,36 @@
+@use './common/variables.scss' as *;
+.ripple-dom {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translate(-50%, -50%);
+  width: 0;
+  padding-top: 0;
+  background-color: $ripple-color;
+  border-radius: 50%;
+  animation: ripple 0.75s linear 1;
+  pointer-events: none;
+}
+
+@keyframes ripple {
+  0% {
+    width: 0;
+    padding-top: 0;
+    opacity: 0.65;
+  }
+  50% {
+    width: 200%;
+    padding-top: 200%;
+    opacity: 0.35;
+  }
+  75% {
+    width: 300%;
+    padding-top: 300%;
+    opacity: 0.2;
+  }
+  100% {
+    width: 400%;
+    padding-top: 400%;
+    opacity: 0;
+  }
+}

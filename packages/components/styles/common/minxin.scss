@@ -1,0 +1,19 @@
+@mixin noselect() {
+  user-select: none;
+}
+
+@mixin mask() {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@mixin text-ellipsis($max-lines: 1) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $max-lines;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

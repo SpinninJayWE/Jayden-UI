@@ -1,0 +1,62 @@
+@use '../../../styles/common/transition.scss' as *;
+@use '../../../styles/common/variables.scss' as *;
+@use '../../../styles/common/minxin.scss' as *;
+.j-modal-overlay {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: $mask-color;
+  z-index: $modal-zdx;
+  .j-modal-wrapper {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    color: $text-color;
+    background-color: $bgc-color;
+    border-radius: 6px;
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    .header {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 12px;
+      height: 40px;
+      box-sizing: border-box;
+      border-bottom: 1px solid $border-color;
+    }
+    .header .title {
+      font-size: $font-size-md;
+      font-weight: 600;
+    }
+    .header .close {
+      padding: 6px;
+      font-size: $font-size-sm;
+      cursor: pointer;
+      &:hover {
+        color: $info-color;
+      }
+    }
+
+    .content {
+      padding: 16px;
+      box-sizing: border-box;
+    }
+    .footer {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 0 16px;
+      height: 56px;
+      border-top: 1px solid $border-color;
+      .default-footer .j-button {
+        margin-left: 12px;
+      }
+    }
+  }
+}

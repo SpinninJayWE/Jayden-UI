@@ -1,0 +1,86 @@
+@use '../../../styles/common/variables.scss' as *;
+@use '../../../styles/common/minxin.scss' as *;
+@use '../../../styles/common/transition.scss' as *;
+.j-carousel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid #999;
+  background-color: $white-color;
+  backdrop-filter: brightness(20%);
+  .j-carousel-inner-wrapper {
+    transform: translate3d(0, 0, 0);
+    transition-property: transform;
+    transition-duration: 400ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    .j-carousel-item {
+      float: left;
+      height: 100%;
+      pointer-events: none;
+      transform: translateZ(0);
+      .default-c-item {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: $font-size-heading;
+        color: $text-color;
+      }
+    }
+  }
+  .j-carousel-trigger-prev,
+  .j-carousel-trigger-next,
+  .j-carousel-trigger-indication,
+  .j-carousel-indication-progress {
+    position: absolute;
+    box-sizing: border-box;
+  }
+
+  .j-carousel-trigger-prev {
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .j-carousel-trigger-next {
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .j-carousel-trigger-indication {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background-color: rgba($color: #000000, $alpha: 0.4);
+    backdrop-filter: blur(14px);
+    .indication-item {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: $black-color;
+      cursor: pointer;
+      &.item-active {
+        background-color: $primary-color;
+      }
+    }
+  }
+  .j-carousel-indication-progress {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background-color: $primary-color-opacity50;
+    .inner-progress {
+      width: 0;
+      height: inherit;
+      background-color: $primary-color;
+      transition: width 0.3s ease;
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "jayden-ui-utils",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "csjayden",
+  "license": "MIT",
+  "dependencies": {
+    "vue": "^3.3.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:SpinninJayWE/Jayden-UI.git"
+  }
+}

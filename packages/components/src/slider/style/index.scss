@@ -1,0 +1,81 @@
+@use '../../../styles/common/variables.scss' as *;
+@use '../../../styles/common/minxin.scss' as *;
+@use '../../../styles/common/transition.scss' as *;
+
+.j-slider {
+  --slider-track-color: var(--primary-color-opacity40);
+  --slider-track-fill-color: var(--primary-color);
+  --slider-thumb-color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 32px;
+  .j-slider-prepend {
+    margin-right: calc(var(--j-slider-thumb-size) + 3px);
+  }
+  .j-slider-append {
+    margin-left: calc(var(--j-slider-thumb-size) + 3px);
+  }
+
+  .j-slider-inner-wrapper {
+    position: relative;
+    flex: 1;
+    .inner-track {
+      position: relative;
+      width: 100%;
+      height: var(--slider-track-size);
+      cursor: pointer;
+      .track-content,
+      .track-fill {
+        border-radius: var(--slider-track-size);
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+      .track-content {
+        width: 100%;
+        height: var(--slider-track-size);
+        background-color: var(--slider-track-color);
+      }
+      .track-fill {
+        width: var(--j-slider-thumb-postion);
+        height: var(--slider-track-size);
+        background-color: var(--slider-track-fill-color);
+      }
+    }
+    .inner-thumb {
+      position: absolute;
+      box-sizing: border-box;
+      left: calc(
+        var(--j-slider-thumb-postion) - (var(--j-slider-thumb-size) / 2)
+      );
+      top: 50%;
+      width: var(--j-slider-thumb-size);
+      height: var(--j-slider-thumb-size);
+      transform: translateY(calc(-1 * var(--j-slider-thumb-size) / 2));
+      background-color: var(--slider-thumb-color);
+      border-radius: 50%;
+      cursor: pointer;
+      &::before {
+        border-radius: 50%;
+        position: absolute;
+        content: '';
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: calc(var(--j-slider-thumb-size) * 2);
+        height: calc(var(--j-slider-thumb-size) * 2);
+        background-color: rgba($color: #000000, $alpha: 0.1);
+        opacity: 0;
+        transition: all 0.2s ease;
+      }
+      &:hover::before,
+      &:active::before {
+        opacity: 1;
+      }
+      &:active::before {
+        background-color: rgba($color: #000000, $alpha: 0.2);
+      }
+    }
+  }
+}

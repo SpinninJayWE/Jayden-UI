@@ -1,0 +1,73 @@
+@use '../../../styles/common/variables.scss' as *;
+@use '../../../styles/common/minxin.scss' as *;
+@use '../../../styles/common/transition.scss' as *;
+.j-select-options {
+  max-height: 280px;
+  overflow-y: auto;
+  font-size: $icon-size-sm;
+  color: $text-color;
+
+  .j-select-option-inner {
+    position: relative;
+    overflow: hidden;
+  }
+  .j-select-option-inner .j-select-options-item {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    box-sizing: border-box;
+    width: 100%;
+    height: 45px;
+    line-height: 45px;
+    text-align: left;
+    transition: background-color 0.25s ease-out;
+    cursor: pointer;
+    @include noselect();
+    &:hover {
+      background-color: $slt-op-hover-bgc-color;
+    }
+    &.selected {
+      background-color: $slt-op-selected-bgc-color;
+    }
+    &.selected:hover {
+      background-color: $slt-op-selected-hover-bgc-color !important;
+    }
+    &.disabled {
+      background-color: $slt-op-disabled-bgc-color;
+      cursor: not-allowed;
+    }
+
+    .label-text,
+    .icon {
+      pointer-events: none;
+    }
+    .label-text {
+      flex: 1;
+      color: $text-color;
+    }
+
+    &.selected .icon {
+      color: $text-gary;
+    }
+  }
+}
+
+/* 设置滚动条的宽度和背景色 */
+::-webkit-scrollbar {
+  width: 4px;
+  background-color: $scroll-track-color;
+}
+
+/* 设置滚动条的轨道样式 */
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: $scroll-track-color;
+}
+
+/* 设置滚动条的滑块样式 */
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: $scroll-thumb-color;
+}

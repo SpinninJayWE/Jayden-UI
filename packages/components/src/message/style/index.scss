@@ -1,0 +1,36 @@
+@use '../../../styles/common/variables.scss' as *;
+@use '../../../styles/common/minxin.scss' as *;
+@use '../../../styles/common/transition.scss' as *;
+
+$msg-bgc-color: $info-color;
+.j-message {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 20px;
+  box-sizing: border-box;
+  min-width: 160px;
+  max-width: 100%;
+  font-size: $font-base-size;
+  color: $white-color;
+  background-color: $msg-bgc-color;
+  border-radius: 6px;
+  box-shadow: $popover-shadow;
+  z-index: $message-zdx;
+  &.warning {
+    background-color: $warn-color;
+  }
+
+  &.success {
+    background-color: $success-color;
+  }
+
+  &.error {
+    background-color: $err-color;
+  }
+  .j-message-inner {
+    flex: 1;
+  }
+}
