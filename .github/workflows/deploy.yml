@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - off #禁用
-      - master # 部署主分支
 
 jobs:
   deploy:
