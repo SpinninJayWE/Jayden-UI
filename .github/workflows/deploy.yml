@@ -3,7 +3,7 @@ name: Deploy to Git Pages
 on:
   push:
     branches:
-      - main # 部署主分支
+      - master # 部署主分支
 
 jobs:
   deploy:
