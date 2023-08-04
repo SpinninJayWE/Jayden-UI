@@ -1,0 +1,27 @@
+name: Deploy to Git Pages
+
+on:
+  push:
+    branches:
+      - master # 此处为你要部署的分支名，例如 main 或 master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build project
+        run: npm run build
+
+      - name: Deploy to Git Pages
+        uses: JamesIves/github-pages-deploy-action@4.1.4
+        with:
+          branch: gh-pages # 部署分支
+          folder: site/docs/.vitepress/dist # 部署目录
+          clean: true # 清空部署目录
