@@ -1,0 +1,33 @@
+@use '../../../styles/common/variables.scss' as *;
+@use '../../../styles/common/minxin.scss' as *;
+@use '../../../styles/common/transition.scss' as *;
+@import '../../../styles/common/elevation.scss';
+.j-card {
+  position: relative;
+  background-color: $bgc-color;
+  color: $text-color;
+  border-radius: 4px;
+  overflow: hidden;
+  .j-card-header {
+    padding: 10px 16px;
+    box-sizing: border-box;
+    .j-card-title {
+      font-size: $font-size-heading;
+      line-height: 32px;
+    }
+    .j-card-subtitle {
+      font-size: $font-size-md;
+      line-height: 30px;
+    }
+  }
+
+  .j-card-content {
+    padding: 0 16px 16px;
+    box-sizing: border-box;
+    font-size: $font-size-sm;
+  }
+  .j-catd-actions {
+    padding: 10px;
+    box-sizing: border-box;
+  }
+}

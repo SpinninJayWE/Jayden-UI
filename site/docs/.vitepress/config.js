@@ -72,6 +72,10 @@ export default {
             {
               text: 'Slider',
               link: '/components/slider/index.md'
+            },
+            {
+              text: 'Card',
+              link: '/components/card/index.md'
             }
           ]
         }

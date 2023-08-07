@@ -12,6 +12,7 @@ declare module '@vue/runtime-core' {
     JCarousel: typeof components.Carousel;
     JCarouselItem: typeof components.CarouselItem;
     jSlider: typeof components.Slider;
+    JCard: typeof components.Card;
   }
 }
 export {};
