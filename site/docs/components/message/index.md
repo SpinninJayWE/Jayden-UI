@@ -129,7 +129,7 @@ function closeAllMessage() {
 :::
 
 <script setup lang="ts">
-import { JMessage } from '@jayden-ui/components';
+import { JMessage } from '../../../../packages/jayden-ui';
 
 function showMessage(type = 'info', closed = false, showIcon = false) {
   JMessage({

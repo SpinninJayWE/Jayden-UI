@@ -1,5 +1,4 @@
 import DefaultTheme from 'vitepress/theme';
-// import JayUi from '@jayden-ui/components';
 import JayUi from '../../../../packages/jayden-ui';
 export default {
   ...DefaultTheme,
