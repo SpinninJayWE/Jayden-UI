@@ -1,16 +1,29 @@
-name: Deploy to Git Pages
+name: Deploy to GitHub Page
 
 on:
   push:
     branches:
       - master
+permissions:
+  contents: write
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy to Git Pages
-        uses: JamesIves/github-pages-deploy-action@4.1.4
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Build
+        run: npm run build:docs
+
+      - name: Move Build Files
+        run: |
+          mkdir gh-page
+          mv ./dist/* ./gh-page/
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
-          clean: true # 清空部署目录
-          branch: gh-page # 部署分支
-          folder: dist # 部署目录
+          CLEAN: true
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          BRANCH: gh-page
+          FOLDER: ./gh-page
