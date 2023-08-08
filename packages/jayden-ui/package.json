@@ -1,33 +1,33 @@
 {
-  "name": "jayden-ui",
-  "version": "1.2.10",
-  "description": "",
-  "main": "lib/index.js",
-  "module": "es/index.mjs",
-  "typing": "es/index.d.ts",
-  "files": [
-    "es",
-    "lib"
-  ],
-  "keywords": [
-    "jayden-ui",
-    "Vue3组件库"
-  ],
-  "sideEffects": [
-    "**/*.css"
-  ],
-  "author": "csjayden",
-  "license": "MIT",
-  "typings": "lib/index.d.ts",
-  "scripts": {
-    "release": "release-it"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:SpinninJayWE/Jayden-UI.git"
-  },
-  "dependencies": {
-    "@vueuse/core": "^10.2.1",
-    "jayden-ui-directives": "^1.0.6"
-  }
+    "name": "jayden-ui",
+    "version": "1.2.10",
+    "description": "",
+    "main": "lib/index.js",
+    "module": "es/index.mjs",
+    "typing": "es/index.d.ts",
+    "files": [
+        "es",
+        "lib"
+    ],
+    "keywords": [
+        "jayden-ui",
+        "Vue3组件库"
+    ],
+    "sideEffects": [
+        "**/*.css"
+    ],
+    "author": "csjayden",
+    "license": "MIT",
+    "typings": "lib/index.d.ts",
+    "scripts": {
+        "release": "release-it"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:SpinninJayWE/Jayden-UI.git"
+    },
+    "dependencies": {
+        "@vueuse/core": "^10.2.1",
+        "jayden-ui-directives": "^1.0.6"
+    }
 }

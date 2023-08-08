@@ -1,5 +1,5 @@
 import _icon from './icon.vue';
-import { withInstall } from 'jayden-ui-utils';
+import { withInstall } from '../../utils/index';
 
 export const Icon = withInstall(_icon);
 export default Icon;
