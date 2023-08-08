@@ -12,7 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "@vueuse/core": "^10.2.1",
-    "jayden-ui-directives": "workspace:^",
+    "jayden-ui": "file:../..",
     "jayden-ui-utils": "^1.0.0"
   },
   "devDependencies": {

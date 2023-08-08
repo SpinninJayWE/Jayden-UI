@@ -14,10 +14,12 @@ jobs:
         uses: actions/checkout@v3
       - name: Install Root And Docs
         run: |
-          npm install
-          npm run install:docs
+          npm install pnpm
+          pnpm recursive install
       - name: Build
-        run: npm run build:docs
+        run: |
+          npm run build:jayden-ui
+          npm run build:docs
 
       - name: Move Build Files
         run: |
