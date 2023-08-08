@@ -12,8 +12,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Install
-        run: npm run install:docs
+      - name: Install Root And Docs
+        run: |
+          npm install
+          npm run install:docs
       - name: Build
         run: npm run build:docs
 
