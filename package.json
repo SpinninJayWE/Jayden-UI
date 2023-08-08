@@ -7,6 +7,7 @@
     "build:jayden-ui": "gulp -f packages/components/script/build/index.ts",
     "publish:jayden-ui": "gulp -f packages/components/script/publish/index.ts",
     "build:docs": "npm --prefix site run docs:build",
+    "install:docs": "npm --prefix site run install",
     "lint:script": "eslint --ext .js,.jsx,.vue,.ts,.tsx --fix --quiet ./"
   },
   "keywords": [],
