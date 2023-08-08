@@ -39,8 +39,5 @@
     "vite-plugin-dts": "^1.7.3",
     "vue": "^3.3.4"
   },
-  "dependencies": {
-    "jayden-ui-directives": "workspace:^",
-    "jayden-ui-utils": "workspace:^1.0.0"
-  }
+  "dependencies": {}
 }
