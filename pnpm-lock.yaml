@@ -3,13 +3,6 @@ lockfileVersion: '6.0'
 importers:
 
   .:
-    dependencies:
-      jayden-ui-directives:
-        specifier: workspace:^
-        version: link:packages/directives
-      jayden-ui-utils:
-        specifier: workspace:^1.0.0
-        version: link:packages/utils
     devDependencies:
       '@types/gulp':
         specifier: ^4.0.13
@@ -110,9 +103,9 @@ importers:
       '@vueuse/core':
         specifier: ^10.2.1
         version: 10.2.1(vue@3.3.4)
-      jayden-ui-directives:
-        specifier: workspace:^
-        version: link:../directives
+      jayden-ui:
+        specifier: file:../..
+        version: 'file:'
       jayden-ui-utils:
         specifier: ^1.0.0
         version: link:../utils
@@ -182,10 +175,6 @@ importers:
         version: 1.4.2(typescript@5.1.6)
 
   site:
-    dependencies:
-      '@jayden-ui/components':
-        specifier: workspace:^
-        version: link:../packages/components
     devDependencies:
       vitepress:
         specifier: 1.0.0-beta.5
@@ -8912,6 +8901,12 @@ packages:
     optionalDependencies:
       commander: 9.5.0
     dev: true
+
+  'file:':
+    resolution: {directory: '', type: directory}
+    name: jayden-ui
+    version: 1.0.0
+    dev: false
 
 settings:
   autoInstallPeers: true

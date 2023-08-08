@@ -15,6 +15,7 @@ jobs:
       - name: Install Root And Docs
         run: |
           npm install -g pnpm
+          pnpm update
           pnpm recursive install
       - name: Build
         run: |
