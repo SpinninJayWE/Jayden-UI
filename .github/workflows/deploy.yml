@@ -1,9 +1,11 @@
-name: Deploy to GitHub Page
+name: Deploy Docs to GitHub Page
 
 on:
   push:
     branches:
       - master
+    paths:
+      - 'site/docs/**'
 permissions:
   contents: write
 jobs:
