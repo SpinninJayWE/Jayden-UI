@@ -5,6 +5,7 @@
 **Github:** [Jayden-UI](https://github.com/SpinninJayWE/Jayden-UI)<br>
 **NPM:** [Jayden-UI](https://www.npmjs.com/package/jayden-ui)<br>
 **Github主页:** [Jay](https://github.com/SpinninJayWE)
+**Docs:Components**: [Jayden-ui:Components](https://spinninjaywe.github.io/Jayden-UI/components/icon/)
 
 # 第一步：安装
 
