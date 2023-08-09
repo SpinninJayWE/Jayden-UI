@@ -28,7 +28,7 @@ import '../style/popover.scss';
 import usePopover from '../hooks/use-popover';
 import usePopoverDom from '../hooks/use-popover-dom';
 import { clickOutside } from 'jayden-ui-directives';
-import { reactive } from '@vue/reactivity';
+import { reactive } from 'vue';
 import { StyleValue, computed } from 'vue';
 defineOptions({
   name: 'j-popover'
