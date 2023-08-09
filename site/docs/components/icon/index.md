@@ -36,6 +36,10 @@
 
 <j-icon style="font-size: 32px" icon="icon-security-fill"></j-icon>
 
+```html
+<j-icon style="font-size: 32px" icon="icon-security-fill"></j-icon>
+```
+
 ## 设置图标粗体
 
 <j-icon color="#0abde3" icon="icon-time" blod></j-icon>
@@ -44,6 +48,15 @@
       icon="icon-customer-businessman-fill"
       :blod="600"
     ></j-icon>
+
+```html
+<j-icon color="#0abde3" icon="icon-time" blod></j-icon>
+<j-icon
+  color="#0abde3"
+  icon="icon-customer-businessman-fill"
+  :blod="600"
+></j-icon>
+```
 
 ## 图标合集
 
