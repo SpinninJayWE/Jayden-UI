@@ -67,7 +67,7 @@ app.mount('#app');
 
 ```html
 <template>
-  <button>我是 ElButton</button>
+  <button>我是 JButton</button>
 </template>
 
 <script>
