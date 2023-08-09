@@ -24,7 +24,7 @@ jobs:
       - name: Move Build Files
         run: |
           mkdir gh-page
-          mv ./dist/* ./gh-page/
+          mv ./site/docs/.vitepress/dist/* ./gh-page/
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v3
