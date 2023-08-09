@@ -17,14 +17,16 @@ type IconProps = {
   disabled?: boolean;
   icon: IconNames | null;
   hover?: boolean;
+  blod?: boolean | number;
 };
 
 const props = withDefaults(defineProps<IconProps>(), {
-  iconColor: '',
+  color: '',
   size: 'medium',
   disabled: false,
   icon: null,
-  hover: true
+  hover: true,
+  blod: false
 });
 
 const iconClass = computed(() => {
@@ -38,6 +40,9 @@ const iconStyles = computed(() => {
   }
   if (props.hover) {
     styles.cursor = 'pointer';
+  }
+  if (props.blod) {
+    styles.fontWeight = typeof props.blod === 'boolean' ? 600 : props.blod;
   }
 
   return styles;

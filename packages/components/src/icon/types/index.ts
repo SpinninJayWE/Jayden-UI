@@ -1,6 +1,7 @@
-export { IconName } from './icon_enum';
-
 export type IconNames =
+  | 'icon-star-half'
+  | 'icon-star'
+  | 'icon-star-full'
   | 'icon-left-double-arrow'
   | 'icon-move'
   | 'icon-location'
