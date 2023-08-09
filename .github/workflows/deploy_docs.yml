@@ -1,0 +1,53 @@
+name: Deploy Docs to GitHub Page
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'site/docs/**'
+permissions:
+  contents: write
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '14'
+
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-
+
+      - name: Install pnpm if not exists
+        run: |
+          if ! command -v pnpm &> /dev/null
+          then
+            npm install -g pnpm
+          fi
+
+      - name: Install Root And Docs
+        run: pnpm update
+
+      - name: Build UI
+        run: npm run build:jayden-ui
+
+      - name: Build Docs
+        run: npm run build:docs
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          CLEAN: true
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          BRANCH: gh-page
+          FOLDER: site/docs/.vitepress/dist/
