@@ -131,6 +131,30 @@ voluptatem!
 </template>
 </j-card>
 
+```html
+<j-card title="Title" subTitle="Subtitle">
+  <template #header>
+    <img
+      style="width: 100%; object-fit: cover; aspect-ratio: 16/9"
+      src="https://img1.baidu.com/it/u=1556499325,2437056787&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=500"
+    />
+  </template>
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, ratione
+  debitis quis est labore voluptatibus! Eaque cupiditate minima, at placeat
+  totam, magni doloremque veniam neque porro libero rerum unde voluptatem!
+  <template #actions>
+    <j-button>Click Me</j-button>
+    &nbsp;
+    <j-button :type="'warn'">Clear</j-button>
+  </template>
+</j-card>
+
+<script setup>
+  import { ref } from 'vue';
+  const elevation = ref(4);
+</script>
+```
+
 <script setup>
 import { ref } from 'vue';
 const elevation = ref(4);
