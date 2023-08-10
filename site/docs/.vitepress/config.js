@@ -17,6 +17,7 @@ export default {
       '/guild/': [
         {
           text: '基础',
+
           items: [
             {
               text: '安装',
