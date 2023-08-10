@@ -3,7 +3,7 @@
     <!-- <Button /> -->
     <!-- <Modal /> -->
     <!-- <Input /> -->
-    <Icon />
+    <!-- <Icon /> -->
     <!-- <Popover /> -->
     <!-- <Select /> -->
     <!-- <Alert /> -->
@@ -11,6 +11,9 @@
     <!-- <Carousel /> -->
     <!-- <Slider /> -->
     <!-- <Card /> -->
+    <div class="content-container">
+      <j-tree></j-tree>
+    </div>
   </div>
 </template>
 <script setup lang="ts">

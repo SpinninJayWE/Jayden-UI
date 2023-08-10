@@ -9,3 +9,4 @@ export * from './message';
 export * from './carousel';
 export * from './slider';
 export * from './card';
+export * from './tree';
