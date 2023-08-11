@@ -9,4 +9,6 @@ export * from './message';
 export * from './carousel';
 export * from './slider';
 export * from './card';
+export * from './collapse-transition';
 export * from './tree';
+export * from './collapse';

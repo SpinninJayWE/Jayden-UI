@@ -14,6 +14,9 @@ declare module '@vue/runtime-core' {
     jSlider: typeof components.Slider;
     JCard: typeof components.Card;
     JTree: typeof components.Tree;
+    JCollapseTransition: typeof components.CollapseTransition;
+    JCollapse: typeof components.Collapse;
+    JCollapseItem: typeof components.CollapseItem;
   }
 }
 export {};

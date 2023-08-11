@@ -77,6 +77,10 @@ export default {
             {
               text: 'Card',
               link: '/components/card/index.md'
+            },
+            {
+              text: 'Collapse',
+              link: '/components/collapse/index.md'
             }
           ]
         }

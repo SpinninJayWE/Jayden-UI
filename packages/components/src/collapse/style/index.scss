@@ -1,0 +1,41 @@
+@use '../../../styles/common/variables.scss' as *;
+@use '../../../styles/common/minxin.scss' as *;
+@use '../../../styles/common/transition.scss' as *;
+.j-collapse {
+  color: $text-color;
+}
+
+.j-collapse .j-collapse-item {
+  --header-height: 48px;
+  --header-bgc: var(--bgc-color);
+  display: block;
+  border-top: 1px solid $border-color;
+  .j-collapse-item-header {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    height: var(--header-height);
+    line-height: var(--header-height);
+    background-color: var(--header-bgc);
+    cursor: pointer;
+
+    .header-title {
+      flex: 1;
+      font-size: $font-size-md;
+    }
+
+    .right-arrow {
+      transform: rotate(0);
+      transition: transform 0.25s ease-in-out;
+    }
+  }
+  .j-collapse-item-content {
+    padding-bottom: 25px;
+    font-size: $font-size-sm;
+  }
+
+  &:last-child {
+    border-bottom: 1px solid $border-color;
+  }
+}
