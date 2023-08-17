@@ -12,3 +12,4 @@ export * from './card';
 export * from './collapse-transition';
 export * from './tree';
 export * from './collapse';
+export * from './checkbox';

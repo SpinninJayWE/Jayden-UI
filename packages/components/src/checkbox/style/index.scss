@@ -1,0 +1,63 @@
+@use '../../../styles/common/variables.scss' as *;
+@use '../../../styles/common/minxin.scss' as *;
+@use '../../../styles/common/transition.scss' as *;
+
+.j-checkbox {
+  display: inline-flex;
+  align-items: center;
+  color: $text-color;
+  cursor: pointer;
+  .j-checkbox-content {
+    display: flex;
+    align-items: center;
+    .j-checkbox-input {
+      opacity: 0;
+      outline: none;
+      position: absolute;
+      margin: 0;
+      width: 0;
+      height: 0;
+      z-index: -1;
+    }
+    .j-checkbox-inner {
+      position: relative;
+      width: 24px;
+      height: 24px;
+      border: 2px solid $border-color;
+      box-sizing: border-box;
+      transition: all 0.15s ease-out;
+      &::before {
+        position: absolute;
+        left: 0;
+        top: 0;
+        content: '\2714'; /* Unicode字符，表示选中状态的勾号 */
+        color: $white-color;
+        background-color: $primary-color;
+        text-align: center;
+        width: 100%;
+        height: 100%;
+        font-size: 14px;
+        opacity: 0;
+        transition: all 0.15s ease-out;
+      }
+    }
+  }
+
+  .j-checkbox-label {
+    padding-left: 10px;
+    font-size: $font-size-button;
+    color: $text-gary;
+  }
+
+  &.is-checked {
+    .j-checkbox-content .j-checkbox-inner {
+      border-color: $primary-color;
+      &::before {
+        opacity: 1;
+      }
+    }
+    .j-checkbox-label {
+      color: $primary-color;
+    }
+  }
+}

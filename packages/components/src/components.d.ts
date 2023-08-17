@@ -17,6 +17,7 @@ declare module '@vue/runtime-core' {
     JCollapseTransition: typeof components.CollapseTransition;
     JCollapse: typeof components.Collapse;
     JCollapseItem: typeof components.CollapseItem;
+    jCheckbox: typeof components.Checkbox;
   }
 }
 export {};
