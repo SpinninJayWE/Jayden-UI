@@ -31,8 +31,10 @@
     }
   }
   .j-collapse-item-content {
-    padding-bottom: 25px;
     font-size: $font-size-sm;
+    .j-collapse-item-content-inner {
+      padding-bottom: 25px;
+    }
   }
 
   &:last-child {

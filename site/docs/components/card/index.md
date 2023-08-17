@@ -155,6 +155,10 @@ voluptatem!
 </script>
 ```
 
+## 源代码
+
+[jayden-ui > card](https://github.com/SpinninJayWE/Jayden-UI/tree/master/packages/components/src/card)
+
 <script setup>
 import { ref } from 'vue';
 const elevation = ref(4);

@@ -200,6 +200,10 @@ NEXT
 </j-carousel>
 ```
 
+## 源代码
+
+[jayden-ui > carousel](https://github.com/SpinninJayWE/Jayden-UI/tree/master/packages/components/src/carousel)
+
 <style>
 img {
     width: 100%;

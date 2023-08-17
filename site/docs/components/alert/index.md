@@ -38,6 +38,10 @@
 <j-alert showIcon closed type="error" message="THIS IS ALERT" />
 ```
 
+## 源代码
+
+[jayden-ui > alert](https://github.com/SpinninJayWE/Jayden-UI/tree/master/packages/components/src/message)
+
 <style scoped>
     .j-message {
         margin-top: 20px;

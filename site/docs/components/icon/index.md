@@ -72,6 +72,10 @@
       </div>
 </div>
 
+## 源代码
+
+[jayden-ui > icon](https://github.com/SpinninJayWE/Jayden-UI/tree/master/packages/components/src/icon)
+
 <script setup lang="ts">
 import { ref } from 'vue';
 import { IconName, JMessage } from '../../../../packages/jayden-ui';

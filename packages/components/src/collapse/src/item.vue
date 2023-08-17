@@ -10,7 +10,9 @@
     </div>
     <CollapseTransition>
       <div v-show="isActive" class="j-collapse-item-content">
-        <slot></slot>
+        <div class="j-collapse-item-content-inner">
+          <slot></slot>
+        </div>
       </div>
     </CollapseTransition>
   </div>

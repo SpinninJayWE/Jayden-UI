@@ -114,6 +114,10 @@ const showPopover = ref(false);
 </j-popover>
 ```
 
+## 源代码
+
+[jayden-ui > popover](https://github.com/SpinninJayWE/Jayden-UI/tree/master/packages/components/src/popover)
+
 <script setup lang="ts">
 import { ref } from 'vue';
 

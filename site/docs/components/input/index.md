@@ -64,6 +64,10 @@
 ></j-input>
 ```
 
+## 源代码
+
+[jayden-ui > input](https://github.com/SpinninJayWE/Jayden-UI/tree/master/packages/components/src/input)
+
 <script setup lang="ts">
 import { ref } from 'vue';
 const ipt = ref('');

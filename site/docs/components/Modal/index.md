@@ -82,6 +82,10 @@ content...
 </j-modal>
 ```
 
+## 源代码
+
+[jayden-ui > modal](https://github.com/SpinninJayWE/Jayden-UI/tree/master/packages/components/src/modal)
+
 <script setup>
 import { ref } from 'vue'
 

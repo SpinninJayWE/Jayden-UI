@@ -95,6 +95,10 @@ ATM-FILL
 </j-button>
 ```
 
+## 源代码
+
+[jayden-ui > button](https://github.com/SpinninJayWE/Jayden-UI/tree/master/packages/components/src/button)
+
 <style lang='scss' scoped>
     .j-button {
         margin-bottom: 12px;

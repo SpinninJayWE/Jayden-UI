@@ -211,6 +211,10 @@ const options = ref([
 
 :::
 
+## 源代码
+
+[jayden-ui > select](https://github.com/SpinninJayWE/Jayden-UI/tree/master/packages/components/src/select)
+
 <script setup lang="ts">
 import { ref } from 'vue';
 

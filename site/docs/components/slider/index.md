@@ -293,3 +293,7 @@ const b = ref(155);
     }
   }
 </style>
+
+## 源代码
+
+[jayden-ui > slider](https://github.com/SpinninJayWE/Jayden-UI/tree/master/packages/components/src/slider)

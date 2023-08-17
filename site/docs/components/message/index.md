@@ -128,6 +128,10 @@ function closeAllMessage() {
 
 :::
 
+## 源代码
+
+[jayden-ui > message](https://github.com/SpinninJayWE/Jayden-UI/tree/master/packages/components/src/message)
+
 <script setup lang="ts">
 import { JMessage } from '../../../../packages/jayden-ui';
 
