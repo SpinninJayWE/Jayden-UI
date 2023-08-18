@@ -13,8 +13,10 @@
     <!-- <Card /> -->
     <!-- <Collapse /> -->
     <div class="content-container">
-      <j-checkbox v-model="checked"> 666 </j-checkbox>
-      <j-checkbox label="777" />
+      <j-checkbox v-model="checked" :trueLabel="1" :falseLabel="0">
+        666
+      </j-checkbox>
+      <!-- <j-checkbox label="777" /> -->
     </div>
   </div>
 </template>

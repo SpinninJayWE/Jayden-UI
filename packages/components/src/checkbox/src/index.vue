@@ -8,11 +8,10 @@
     <span class="j-checkbox-content">
       <input
         ref="checkedRef"
-        :value="modelValue"
+        v-model="checked"
         @change="handleCheckboxInputChange"
         class="j-checkbox-input"
         type="checkbox"
-        aria-hidden="false"
       />
       <span class="j-checkbox-inner"></span>
     </span>
@@ -26,61 +25,42 @@
 </template>
 
 <script setup lang="ts">
-import { ComponentSize } from '@/constant';
+import { ComponentSize, UPDATE_MODELVALUE } from '../../../constant';
 import '../style/index.scss';
 import useCheckBoxDom from '../hooks/use-checkbox-dom';
-import { onMounted, ref, watch } from 'vue';
+import useCheckbox from '../hooks/use-checkbox';
 defineOptions({
   name: 'j-checkbox'
 });
 
-type valueType = boolean | string | number | null;
+export type valueType = boolean | string | number | null;
+export type CheckLabel = string | number;
 export type CheckboxProps = {
   modelValue?: valueType;
   size?: ComponentSize;
   label?: string;
+  trueLabel?: CheckLabel;
+  falseLabel?: CheckLabel;
+  disabled?: boolean;
 };
 
-const emit = defineEmits(['update:modelValue']);
+const emit = defineEmits([UPDATE_MODELVALUE]);
 
 const props = withDefaults(defineProps<CheckboxProps>(), {
   label: '',
   size: 'medium',
-  modelValue: null
+  modelValue: null,
+  trueLabel: undefined,
+  falseLabel: undefined,
+  disabled: false
 });
 
-const checked = ref<valueType>(false);
-
-const checkedRef = ref<HTMLInputElement>();
-
-const handleCheckboxInputChange = (val: Event) => {
-  const target = val.target as HTMLInputElement;
-  const isChecked = target.checked;
-  checked.value = isChecked;
-  emit('update:modelValue', isChecked);
-};
-
-const initChecked = () => {
-  if (props.modelValue !== null) {
-    checked.value = props.modelValue;
-    if (typeof props.modelValue === 'boolean') {
-      checkedRef.value?.checked = props.modelValue;
-    }
-  }
-};
-
-watch(
-  () => props.modelValue,
-  () => {
-    initChecked();
-  }
+const { checked, checkedRef, handleCheckboxInputChange } = useCheckbox(
+  props,
+  emit
 );
 
 const { checkboxInputStyles } = useCheckBoxDom(props);
-
-onMounted(() => {
-  initChecked();
-});
 </script>
 
 <style lang="scss" scoped></style>
