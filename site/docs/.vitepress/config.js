@@ -81,6 +81,10 @@ export default {
             {
               text: 'Collapse',
               link: '/components/collapse/index.md'
+            },
+            {
+              text: 'Checkbox',
+              link: '/components/checkbox/index.md'
             }
           ]
         }

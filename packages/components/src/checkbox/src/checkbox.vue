@@ -9,11 +9,18 @@
       <input
         ref="checkedRef"
         v-model="checked"
+        :readonly="readonly"
+        :disabled="disabled"
         @change="handleCheckboxInputChange"
         class="j-checkbox-input"
         type="checkbox"
+        @keydown="handleCheckboxKeyDown"
       />
-      <span class="j-checkbox-inner"></span>
+      <span class="j-checkbox-inner">
+        <div class="icon-box">
+          <Icon :icon="icon || 'icon-selected'" />
+        </div>
+      </span>
     </span>
     <span class="j-checkbox-label">
       <slot />
@@ -29,6 +36,7 @@ import { ComponentSize, UPDATE_MODELVALUE } from '../../../constant';
 import '../style/index.scss';
 import useCheckBoxDom from '../hooks/use-checkbox-dom';
 import useCheckbox from '../hooks/use-checkbox';
+import Icon, { IconName } from '../../icon';
 defineOptions({
   name: 'j-checkbox'
 });
@@ -41,24 +49,42 @@ export type CheckboxProps = {
   label?: string;
   trueLabel?: CheckLabel;
   falseLabel?: CheckLabel;
+  readonly?: boolean;
   disabled?: boolean;
+  borderColor?: string;
+  labelColor?: string;
+  labelActiveColor?: string;
+  color?: string;
+  fillColor?: string;
+  defaultChecked?: boolean;
+  icon?: IconName;
 };
 
-const emit = defineEmits([UPDATE_MODELVALUE]);
+const emit = defineEmits([UPDATE_MODELVALUE, 'change']);
 
 const props = withDefaults(defineProps<CheckboxProps>(), {
   label: '',
   size: 'medium',
-  modelValue: null,
+  modelValue: undefined,
   trueLabel: undefined,
   falseLabel: undefined,
-  disabled: false
+  readonly: false,
+  disabled: false,
+  borderColor: undefined,
+  labelColor: undefined,
+  labelActiveColor: undefined,
+  color: undefined,
+  fillColor: undefined,
+  defaultChecked: false,
+  icon: undefined
 });
 
-const { checked, checkedRef, handleCheckboxInputChange } = useCheckbox(
-  props,
-  emit
-);
+const {
+  checked,
+  checkedRef,
+  handleCheckboxInputChange,
+  handleCheckboxKeyDown
+} = useCheckbox(props, emit);
 
 const { checkboxInputStyles } = useCheckBoxDom(props);
 </script>

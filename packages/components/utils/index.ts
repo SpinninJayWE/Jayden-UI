@@ -65,3 +65,5 @@ export {
   convertValueToPercentage
 };
 export { default as initDefaultProps } from './props';
+
+export * from './component';

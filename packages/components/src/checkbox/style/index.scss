@@ -1,12 +1,20 @@
 @use '../../../styles/common/variables.scss' as *;
 @use '../../../styles/common/minxin.scss' as *;
 @use '../../../styles/common/transition.scss' as *;
-
+@use '../../../styles//common//elevation.scss' as *;
 .j-checkbox {
+  --j-checkbox-border-color: var(--border-color);
+  --j-checkbox-label-color: var(--text-gary);
+  --j-checkbox-label-active-color: var(--primary-color);
+  --j-checkbox-color: var(--white-color);
+  --j-checkbox-fill-color: var(--primary-color);
   display: inline-flex;
   align-items: center;
   color: $text-color;
   cursor: pointer;
+  &:hover .j-checkbox-content .j-checkbox-inner {
+    box-shadow: map-get($map: $elevations, $key: 4);
+  }
   .j-checkbox-content {
     display: flex;
     align-items: center;
@@ -18,25 +26,37 @@
       width: 0;
       height: 0;
       z-index: -1;
+      &:focus ~ .j-checkbox-inner {
+        box-shadow: map-get($map: $elevations, $key: 4);
+      }
     }
     .j-checkbox-inner {
       position: relative;
       width: 24px;
       height: 24px;
-      border: 2px solid $border-color;
+      border: 2px solid var(--j-checkbox-border-color);
+      border-radius: 2px;
       box-sizing: border-box;
       transition: all 0.15s ease-out;
       &::before {
         position: absolute;
         left: 0;
         top: 0;
-        content: '\2714'; /* Unicode字符，表示选中状态的勾号 */
-        color: $white-color;
-        background-color: $primary-color;
+        content: ''; /* Unicode字符，表示选中状态的勾号 */
+        background-color: var(--j-checkbox-fill-color);
         text-align: center;
         width: 100%;
         height: 100%;
-        font-size: 14px;
+        opacity: 0;
+        transition: all 0.15s ease-out;
+      }
+      .icon-box {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        color: var(--j-checkbox-color);
+        font-size: 16px;
         opacity: 0;
         transition: all 0.15s ease-out;
       }
@@ -46,18 +66,20 @@
   .j-checkbox-label {
     padding-left: 10px;
     font-size: $font-size-button;
-    color: $text-gary;
+    color: var(--j-checkbox-label-color);
+    user-select: none;
   }
 
   &.is-checked {
     .j-checkbox-content .j-checkbox-inner {
-      border-color: $primary-color;
-      &::before {
+      border-color: var(--j-checkbox-fill-color);
+      &::before,
+      .icon-box {
         opacity: 1;
       }
     }
     .j-checkbox-label {
-      color: $primary-color;
+      color: var(--j-checkbox-label-active-color);
     }
   }
 }

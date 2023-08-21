@@ -13,10 +13,65 @@
     <!-- <Card /> -->
     <!-- <Collapse /> -->
     <div class="content-container">
-      <j-checkbox v-model="checked" :trueLabel="1" :falseLabel="0">
-        666
-      </j-checkbox>
-      <!-- <j-checkbox label="777" /> -->
+      <h2>Checkbox 复选框</h2>
+      <h3>基本用法</h3>
+      Checkbox复选框 表示两种状态之间的切换
+      <div>
+        <j-checkbox v-model="option" label="option"> </j-checkbox>
+        <j-checkbox v-model="option2" label="option2"> </j-checkbox>
+      </div>
+      <h3>禁用状态</h3>
+      通过disabled属性实现禁用
+      <div>
+        <j-checkbox v-model="option" label="Not Disabled"> </j-checkbox>
+        <j-checkbox disabled v-model="option2" label="Disabled"> </j-checkbox>
+      </div>
+      <h3>只读状态</h3>
+      通过readonly属性实现只读
+      <div>
+        <j-checkbox readonly label="Readonly"> </j-checkbox>
+      </div>
+      <h3>自定义 true/false label</h3>
+      通过 trueLabel/falseLabel 自定义选中/未选中的值
+      <div>
+        <j-checkbox
+          trueLabel="Active"
+          falseLabel="Inactive"
+          v-model="custom"
+          :label="custom"
+        >
+        </j-checkbox>
+      </div>
+      <h3>自定义颜色</h3>
+      可通过多个属性设置checkbox的颜色
+      <div>
+        <j-checkbox borderColor="red" label="borderColor"> </j-checkbox>
+        <j-checkbox labelColor="#5f27cd" label="labelColor"> </j-checkbox>
+        <j-checkbox
+          :defaultChecked="true"
+          labelActiveColor="#10ac84"
+          label="labelActiveColor"
+        >
+        </j-checkbox>
+        <j-checkbox
+          :defaultChecked="true"
+          fillColor="#00d2d3"
+          label="fillColor"
+        >
+        </j-checkbox>
+        <j-checkbox :defaultChecked="true" color="#000" label="color">
+        </j-checkbox>
+        <j-checkbox
+          borderColor="red"
+          labelColor="#5f27cd"
+          labelActiveColor="#10ac84"
+          fillColor="#00d2d3"
+          color="#000"
+          :defaultChecked="true"
+          label="Full"
+        >
+        </j-checkbox>
+      </div>
     </div>
   </div>
 </template>
@@ -35,7 +90,10 @@ import Card from './exp/card.vue';
 import Collapse from './exp/collapse.vue';
 import { ref } from 'vue';
 
-const checked = ref(true);
+const option = ref(true);
+const option2 = ref(false);
+
+const custom = ref('Active');
 </script>
 <style lang="scss" scoped>
 .app {
