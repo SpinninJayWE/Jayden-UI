@@ -7,10 +7,9 @@
   >
     <span class="j-checkbox-content">
       <input
-        ref="checkedRef"
         v-model="checked"
         :readonly="readonly"
-        :disabled="disabled"
+        :disabled="disabledComputed"
         @change="handleCheckboxInputChange"
         class="j-checkbox-input"
         type="checkbox"
@@ -81,12 +80,12 @@ const props = withDefaults(defineProps<CheckboxProps>(), {
 
 const {
   checked,
-  checkedRef,
+  disabledComputed,
   handleCheckboxInputChange,
   handleCheckboxKeyDown
 } = useCheckbox(props, emit);
 
-const { checkboxInputStyles } = useCheckBoxDom(props);
+const { checkboxInputStyles } = useCheckBoxDom(props, disabledComputed);
 </script>
 
 <style lang="scss" scoped></style>

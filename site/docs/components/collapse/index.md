@@ -299,7 +299,7 @@ const collapse = ref(['1', '3']);
 
 ## 源代码
 
-[jayden-ui > collapse](https://github.com/SpinninJayWE/Jayden-UI/tree/master/packages/components/src/carousel)
+[jayden-ui > collapse](https://github.com/SpinninJayWE/Jayden-UI/tree/master/packages/components/src/collapse)
 
 <script setup lang="ts">
 import { ref } from 'vue';

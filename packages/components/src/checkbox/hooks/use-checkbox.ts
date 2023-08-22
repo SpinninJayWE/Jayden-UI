@@ -1,9 +1,54 @@
 import { UPDATE_MODELVALUE } from '../../../constant';
-import { CheckLabel, CheckboxProps, valueType } from '../src/checkbox.vue';
-import { onMounted, watch, ref } from 'vue';
+import { CheckboxProps, valueType } from '../src/checkbox.vue';
+import { onMounted, watch, ref, inject, computed } from 'vue';
+import { CheckBoxProvides } from './use-checkbox-group';
 export default function useCheckbox(props: CheckboxProps, emit: any) {
+  const checkboxProvides: CheckBoxProvides | undefined = inject(
+    'checkboxProvides',
+    undefined
+  );
+
   const checked = ref<valueType>(props.defaultChecked || false);
-  const checkedRef = ref<HTMLInputElement>();
+
+  const disabledComputed = computed(() => {
+    let res = props.disabled || false;
+    if (checkboxProvides) {
+      const limits = (checkboxProvides as CheckBoxProvides).limits;
+
+      if (limits.value.isMined && checked.value) {
+        res = true;
+      } else if (limits.value.isMaxed && !checked.value) {
+        res = true;
+      }
+    }
+    return res;
+  });
+
+  function initializeByGroup() {
+    if (!checkboxProvides) return;
+    watch(
+      () => checkboxProvides.modelValueUpdateCount,
+      (val) => {
+        const checkboxList = checkboxProvides.checkedList;
+        if (checkboxList.value.includes(props.label!)) {
+          checked.value = true;
+        } else {
+          checked.value = false;
+        }
+      },
+      {
+        deep: true,
+        immediate: true
+      }
+    );
+
+    watch(checked, (val) => {
+      checkboxProvides?.updateCheckboxsMemberChecked(
+        props.label,
+        formatCheckStatus(val)
+      );
+    });
+  }
 
   const formatCheckStatus = (val: valueType) => {
     if (val === props.trueLabel) {
@@ -51,18 +96,21 @@ export default function useCheckbox(props: CheckboxProps, emit: any) {
   watch(
     () => props.modelValue,
     (val) => {
-      setChecked(formatCheckStatus(val));
+      setChecked(formatCheckStatus(val!));
     }
   );
 
   onMounted(() => {
+    if (checkboxProvides) {
+      initializeByGroup();
+    }
     if (props.modelValue === undefined) return;
     setChecked(formatCheckStatus(props.modelValue));
   });
   return {
     checked,
-    checkedRef,
     handleCheckboxInputChange,
-    handleCheckboxKeyDown
+    handleCheckboxKeyDown,
+    disabledComputed
   };
 }

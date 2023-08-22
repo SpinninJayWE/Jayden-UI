@@ -19,7 +19,7 @@
 
 ## 禁用状态
 
-通过**disabled**属性实现禁用
+通过 **disabled** 属性实现禁用
 <j-checkbox v-model="option" label="Not Disabled"> </j-checkbox>
 <j-checkbox disabled v-model="option2" label="Disabled"> </j-checkbox>
 
@@ -35,7 +35,7 @@
 
 ## 只读状态
 
-通过**readonly**属性实现只读
+通过 **readonly** 属性实现只读
 
 <j-checkbox readonly :defaultChecked='true' label="Readonly"> </j-checkbox>
 
@@ -45,7 +45,7 @@
 
 ## 自定义 true/false label
 
-通过 trueLabel/falseLabel 自定义选中/未选中的值
+通过 **trueLabel/falseLabel** 自定义选中/未选中的值
 <j-checkbox
     trueLabel="Active"
     falseLabel="Inactive"
@@ -124,6 +124,65 @@
 </j-checkbox>
 ```
 
+## 多选框组 checkbox-group
+
+适用于多个勾选框绑定到同一个数组的情景，通过是否勾选来表示这一组选项中选中的项。
+
+<j-checkbox-group v-model="checkList">
+<j-checkbox label="OPT1"> </j-checkbox>
+<j-checkbox label="OPT2"> </j-checkbox>
+<j-checkbox label="OPT3"> </j-checkbox>
+<j-checkbox label="OPT4"> </j-checkbox>
+<j-checkbox label="selected and disabled" disabled> </j-checkbox>
+<j-checkbox label="disabled" disabled> </j-checkbox>
+</j-checkbox-group>
+
+```html
+<j-checkbox-group v-model="checkList">
+  <j-checkbox label="OPT1"> </j-checkbox>
+  <j-checkbox label="OPT2"> </j-checkbox>
+  <j-checkbox label="OPT3"> </j-checkbox>
+  <j-checkbox label="OPT4"> </j-checkbox>
+  <j-checkbox label="selected and disabled" disabled> </j-checkbox>
+  <j-checkbox label="disabled" disabled> </j-checkbox>
+</j-checkbox-group>
+
+<script setup>
+  import { ref } from 'vue';
+
+  const checkList = ref(['OPT1', 'selected and disabled']);
+</script>
+```
+
+## 可选项目数量的限制
+
+通过 **min** 和 **max** 属性限制数量范围
+<j-checkbox-group :min="1" :max="2" v-model="checkList2">
+<j-checkbox label="OPT1"> </j-checkbox>
+<j-checkbox label="OPT2"> </j-checkbox>
+<j-checkbox label="OPT3"> </j-checkbox>
+<j-checkbox label="OPT4"> </j-checkbox>
+<j-checkbox label="OPT5"> </j-checkbox>
+<j-checkbox label="OPT6"> </j-checkbox>
+</j-checkbox-group>
+
+```html
+<j-checkbox-group :min="1" :max="2" v-model="checkList">
+  <j-checkbox label="OPT1"> </j-checkbox>
+  <j-checkbox label="OPT2"> </j-checkbox>
+  <j-checkbox label="OPT3"> </j-checkbox>
+  <j-checkbox label="OPT4"> </j-checkbox>
+  <j-checkbox label="OPT5"> </j-checkbox>
+  <j-checkbox label="OPT6"> </j-checkbox>
+</j-checkbox-group>
+
+<script setup>
+  import { ref } from 'vue';
+
+  const checkList = ref(['OPT1', 'selected and disabled']);
+</script>
+```
+
 ## 源代码
 
 [jayden-ui > checkbox](https://github.com/SpinninJayWE/Jayden-UI/tree/master/packages/components/src/checkbox)
@@ -134,6 +193,10 @@ const option = ref(true);
 const option2 = ref(false);
 
 const custom = ref('Active');
+
+const checkList = ref(['OPT1', 'selected and disabled']);
+
+const checkList2 = ref(['OPT2']);
 </script>
 <style>
  .j-checkbox {

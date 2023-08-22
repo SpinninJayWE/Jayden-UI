@@ -1,8 +1,11 @@
 import { componentDisabeld } from '../../../utils';
 import { checkboxSizeMap } from '../../../constant';
 import { CheckboxProps } from '../src/checkbox.vue';
-import { StyleValue, computed } from 'vue';
-export default function useCheckBoxDom(props: CheckboxProps) {
+import { ComputedRef, StyleValue, computed } from 'vue';
+export default function useCheckBoxDom(
+  props: CheckboxProps,
+  disabledComputed: ComputedRef<boolean>
+) {
   const checkboxInputStyles = computed(() => {
     const res: StyleValue = {};
 
@@ -13,7 +16,7 @@ export default function useCheckBoxDom(props: CheckboxProps) {
     if (props.readonly) {
       res.pointerEvents = 'none';
     }
-    componentDisabeld(props.disabled, res);
+    componentDisabeld(disabledComputed.value, res);
 
     if (props.borderColor) {
       res['--j-checkbox-border-color'] = props.borderColor;

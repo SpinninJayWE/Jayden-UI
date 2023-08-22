@@ -18,6 +18,7 @@ declare module '@vue/runtime-core' {
     JCollapse: typeof components.Collapse;
     JCollapseItem: typeof components.CollapseItem;
     jCheckbox: typeof components.Checkbox;
+    JCheckboxGroup: typeof components.CheckboxGroup;
   }
 }
 export {};

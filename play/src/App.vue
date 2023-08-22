@@ -72,6 +72,27 @@
         >
         </j-checkbox>
       </div>
+      <h3>多选框组 checkbox-group</h3>
+      适用于多个勾选框绑定到同一个数组的情景，通过是否勾选来表示这一组选项中选中的项。
+      {{ checkList }}
+      <j-checkbox-group v-model="checkList">
+        <j-checkbox label="OPT1"> </j-checkbox>
+        <j-checkbox label="OPT2"> </j-checkbox>
+        <j-checkbox label="OPT3"> </j-checkbox>
+        <j-checkbox label="OPT4"> </j-checkbox>
+        <j-checkbox label="OPT5"> </j-checkbox>
+        <j-checkbox label="OPT6"> </j-checkbox>
+      </j-checkbox-group>
+      <h3>可选项目数量的限制</h3>
+      通过min和max属性限制数量范围
+      <j-checkbox-group :min="1" :max="2" v-model="checkList2">
+        <j-checkbox label="OPT1"> </j-checkbox>
+        <j-checkbox label="OPT2"> </j-checkbox>
+        <j-checkbox label="OPT3"> </j-checkbox>
+        <j-checkbox label="OPT4"> </j-checkbox>
+        <j-checkbox label="OPT5"> </j-checkbox>
+        <j-checkbox label="OPT6"> </j-checkbox>
+      </j-checkbox-group>
     </div>
   </div>
 </template>
@@ -94,6 +115,10 @@ const option = ref(true);
 const option2 = ref(false);
 
 const custom = ref('Active');
+
+const checkList = ref(['OPT1', 'OPT3']);
+
+const checkList2 = ref(['OPT2']);
 </script>
 <style lang="scss" scoped>
 .app {
